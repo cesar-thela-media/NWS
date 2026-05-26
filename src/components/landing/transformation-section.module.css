@@ -1,0 +1,246 @@
+.section {
+  position: relative;
+  background: radial-gradient(circle at 20% 10%, #232a36 0%, #11151d 52%, #0b0e12 100%);
+  padding: clamp(56px, 3.9vw, 84px) clamp(20px, 2.7vw, 58px) clamp(34px, 2.2vw, 44px);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1288px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: clamp(15px, 0.82vw, 19px);
+  letter-spacing: 0.1em;
+  color: #9ba7bc;
+  font-weight: 600;
+}
+
+.heading {
+  margin-top: 8px;
+  font-size: var(--text-display-section);
+  line-height: 1;
+  color: #f5f3ef;
+  max-width: 9ch;
+}
+
+.compareFrame {
+  position: relative;
+  margin-top: 28px;
+  height: clamp(300px, 19.6vw, 424px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.beforeImage,
+.afterImage {
+  object-fit: cover;
+}
+
+.beforeImage {
+  object-position: left center;
+}
+
+.afterLayer {
+  position: absolute;
+  inset: 0 0 0 auto;
+  overflow: hidden;
+}
+
+.afterImage {
+  object-position: right center;
+}
+
+.beforeLabel,
+.afterLabel {
+  position: absolute;
+  top: 16px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(22px, 1.2vw, 34px);
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 3;
+}
+
+.beforeLabel {
+  left: 16px;
+}
+
+.afterLabel {
+  right: 16px;
+}
+
+.sliderLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.72);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.sliderHandle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  color: #101419;
+  font-size: 22px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sliderInput {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.001;
+  cursor: ew-resize;
+  z-index: 8;
+}
+
+.sliderInput:focus-visible {
+  opacity: 0.02;
+}
+
+.chips {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  list-style: none;
+}
+
+.chip {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 0 22px;
+  font-size: var(--text-small);
+  backdrop-filter: blur(12px);
+}
+
+.chipIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 205, 122, 0.5);
+  color: #e4c586;
+  font-size: 21px;
+}
+
+.chipText {
+  white-space: nowrap;
+}
+
+.caseStudyLink {
+  margin: 18px auto 0;
+  color: #f4cd7a;
+  font-size: clamp(22px, 1.7vw, 32px);
+  text-decoration: none;
+}
+
+.caseStudyLink::after {
+  content: " →";
+}
+
+@media (min-width: 1440px) {
+  .section {
+    min-height: 764px;
+    padding: 66px 58px 20px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+  }
+
+  .heading {
+    font-size: 98px;
+    margin-top: 10px;
+  }
+
+  .compareFrame {
+    margin-top: 28px;
+    height: 422px;
+    border-radius: 22px;
+  }
+
+  .sliderHandle {
+    width: 68px;
+    height: 68px;
+    font-size: 24px;
+  }
+
+  .chips {
+    margin-top: 18px;
+    gap: 28px;
+    grid-template-columns: repeat(3, minmax(420px, 1fr));
+  }
+
+  .chip {
+    min-height: 62px;
+    font-size: 22px;
+  }
+
+  .caseStudyLink {
+    margin-top: 20px;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .heading {
+    max-width: 13ch;
+  }
+
+  .chips {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 44px 20px 32px;
+  }
+
+  .compareFrame {
+    margin-top: 20px;
+    height: 260px;
+    border-radius: 14px;
+  }
+
+  .chips {
+    margin-top: 18px;
+    gap: 10px;
+  }
+
+  .chip {
+    min-height: 50px;
+  }
+}

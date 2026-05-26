@@ -1,0 +1,151 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 0%, rgba(78, 64, 44, 0.18) 0%, rgba(18, 20, 24, 0.96) 34%, #0d1014 100%);
+  padding: clamp(30px, 2.6vw, 50px) clamp(20px, 2.6vw, 56px) clamp(10px, 1.4vw, 20px);
+}
+
+.decorativeWord {
+  position: absolute;
+  inset: -28px 0 auto;
+  text-align: center;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(260px, 32vw, 620px);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.09);
+  user-select: none;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(42px, 4.8vw, 78px);
+  line-height: 0.96;
+  color: #f6f3ef;
+  max-width: 11ch;
+  margin-inline: auto;
+}
+
+.body {
+  margin: 6px auto 0;
+  max-width: 760px;
+  color: #d3d0ca;
+  font-size: clamp(18px, 1.35vw, 28px);
+  line-height: 1.32;
+}
+
+.buttonRow {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.primaryButton,
+.secondaryButton {
+  border-radius: 999px;
+  min-width: 286px;
+  padding: 15px 30px;
+  font-size: var(--text-small);
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.primaryButton {
+  background: #fff;
+  color: #11161d;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  color: #fff;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+  opacity: 0.94;
+}
+
+.serviceAreas {
+  margin-top: 8px;
+  color: #c4c0ba;
+  font-size: clamp(15px, 0.95vw, 22px);
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 1440px) {
+  .section {
+    min-height: 244px;
+    padding: 12px 56px 10px;
+  }
+
+  .decorativeWord {
+    inset: -42px 0 auto;
+    font-size: 580px;
+    color: rgba(255, 255, 255, 0.12);
+  }
+
+  .inner {
+    max-width: 1040px;
+  }
+
+  .heading {
+    font-size: 74px;
+    max-width: none;
+  }
+
+  .body {
+    max-width: 700px;
+    font-size: 24px;
+    margin-top: 4px;
+  }
+
+  .buttonRow {
+    margin-top: 10px;
+    gap: 26px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 344px;
+    min-width: 344px;
+    height: 58px;
+    padding: 0 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .serviceAreas {
+    margin-top: 6px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 760px) {
+  .heading {
+    max-width: 14ch;
+    margin-inline: auto;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: min(100%, 360px);
+    min-width: unset;
+  }
+}

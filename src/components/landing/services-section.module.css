@@ -1,0 +1,306 @@
+.section {
+  position: relative;
+  background: #f6f4f1;
+  color: #1e2127;
+  padding: clamp(44px, 3.5vw, 72px) clamp(20px, 2.7vw, 56px) clamp(0px, 0vw, 10px);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.topBand {
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 26px;
+  align-items: start;
+}
+
+.copyCol {
+  padding-top: 6px;
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #707781;
+}
+
+.heading {
+  margin-top: 10px;
+  font-size: var(--text-display-section);
+  line-height: 0.98;
+  max-width: 8ch;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  min-height: 344px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(30, 33, 39, 0.08);
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 16px 15px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(12, 16, 22, 0) 0%, rgba(12, 16, 22, 0.86) 100%);
+}
+
+.cardOverlay h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(22px, 1.55vw, 34px);
+  line-height: 0.96;
+  color: #f7f5f2;
+  max-width: 7ch;
+  white-space: pre-line;
+}
+
+.cardOverlay span {
+  color: #f7f5f2;
+  font-size: 24px;
+}
+
+.testimonialBand {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 28px;
+  align-items: stretch;
+  border-top: 1px solid rgba(30, 33, 39, 0.12);
+}
+
+.quoteCol {
+  position: relative;
+  background: transparent;
+  padding: clamp(30px, 3vw, 54px) clamp(18px, 2vw, 34px) 18px 72px;
+}
+
+.quoteMark {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(140px, 12vw, 240px);
+  color: rgba(166, 124, 69, 0.12);
+  line-height: 1;
+}
+
+.quote {
+  margin-top: 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(28px, 3vw, 64px);
+  line-height: 1.12;
+  color: #2a2f37;
+}
+
+.attribution {
+  margin-top: 20px;
+  font-size: var(--text-small);
+  color: #444952;
+}
+
+.mediaCol {
+  position: relative;
+  min-height: 334px;
+  clip-path: polygon(0 0, calc(100% - 96px) 0, 100% 96px, 100% 100%, 96px 100%, 0 calc(100% - 96px));
+  overflow: hidden;
+}
+
+.testimonialImage {
+  object-fit: cover;
+}
+
+.reviewChip {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  border-radius: 20px;
+  background: rgba(26, 21, 16, 0.82);
+  color: #fff;
+  padding: 13px 18px;
+  min-width: 470px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.stars {
+  color: #f4cd7a;
+  letter-spacing: 0.12em;
+  margin-bottom: 3px;
+}
+
+@media (min-width: 1440px) {
+  .section {
+    min-height: 764px;
+    padding: 42px 56px 0;
+  }
+
+  .topBand {
+    grid-template-columns: 520px 1fr;
+    gap: 36px;
+    min-height: 340px;
+  }
+
+  .eyebrow {
+    font-size: 22px;
+  }
+
+  .heading {
+    font-size: 96px;
+    max-width: 520px;
+    margin-top: 8px;
+  }
+
+  .cards {
+    gap: 18px;
+  }
+
+  .card {
+    min-height: 340px;
+    border-radius: 10px;
+  }
+
+  .cardOverlay {
+    padding: 18px 14px;
+  }
+
+  .cardOverlay h3 {
+    font-size: 30px;
+    line-height: 1.06;
+    max-width: 10ch;
+  }
+
+  .cardOverlay span {
+    font-size: 26px;
+  }
+
+  .testimonialBand {
+    margin-top: 14px;
+    grid-template-columns: 1020px 1fr;
+    gap: 28px;
+    min-height: 364px;
+  }
+
+  .quoteCol {
+    padding: 38px 28px 12px 92px;
+  }
+
+  .quoteMark {
+    left: 0;
+    top: 10px;
+    font-size: 210px;
+  }
+
+  .quote {
+    margin-top: 0;
+    font-size: 60px;
+    line-height: 1.06;
+  }
+
+  .attribution {
+    margin-top: 22px;
+    font-size: 22px;
+  }
+
+  .mediaCol {
+    min-height: 364px;
+    clip-path: polygon(0 0, calc(100% - 124px) 0, 100% 124px, 100% 100%, 124px 100%, 0 calc(100% - 124px));
+  }
+
+  .reviewChip {
+    min-width: 566px;
+    height: 92px;
+    left: 20px;
+    bottom: 14px;
+    border-radius: 20px;
+    padding: 0 26px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  .stars {
+    margin-bottom: 0;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .topBand {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, minmax(210px, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonialBand {
+    grid-template-columns: 1fr;
+  }
+
+  .mediaCol {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 620px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewChip {
+    left: 14px;
+    right: 14px;
+    min-width: unset;
+  }
+
+  .quoteCol {
+    padding: 22px 20px 14px 36px;
+  }
+
+  .quoteMark {
+    font-size: 110px;
+  }
+
+  .quote {
+    margin-top: 24px;
+  }
+
+  .mediaCol {
+    clip-path: none;
+    border-radius: 18px;
+  }
+
+  .reviewChip {
+    border-radius: 18px;
+  }
+}

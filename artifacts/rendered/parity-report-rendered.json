@@ -1,0 +1,69 @@
+{
+  "threshold": 95,
+  "baseUrl": "http://127.0.0.1:3000",
+  "generatedAt": "2026-05-26T17:40:05.384Z",
+  "allPass": false,
+  "minParityPct": 34.5307,
+  "results": [
+    {
+      "section": "hero",
+      "selector": "section[aria-labelledby='hero-heading']",
+      "comparedWidth": 2160,
+      "comparedHeight": 901,
+      "mismatchPct": 65.4693,
+      "parityPct": 34.5307,
+      "pass": false,
+      "referencePath": "C:\\Users\\idder\\tmg\\NWS\\section-by-section\\hero section.png",
+      "actualPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\hero.png",
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\hero-diff.png"
+    },
+    {
+      "section": "section-2",
+      "selector": "section[aria-labelledby='about-heading']",
+      "comparedWidth": 2160,
+      "comparedHeight": 901,
+      "mismatchPct": 20.6402,
+      "parityPct": 79.3598,
+      "pass": false,
+      "referencePath": "C:\\Users\\idder\\tmg\\NWS\\section-by-section\\2nd section.png",
+      "actualPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-2.png",
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-2-diff.png"
+    },
+    {
+      "section": "section-3",
+      "selector": "section[aria-labelledby='transformation-heading']",
+      "comparedWidth": 2160,
+      "comparedHeight": 764,
+      "mismatchPct": 43.82,
+      "parityPct": 56.18,
+      "pass": false,
+      "referencePath": "C:\\Users\\idder\\tmg\\NWS\\section-by-section\\3rd section.png",
+      "actualPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-3.png",
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-3-diff.png"
+    },
+    {
+      "section": "section-4",
+      "selector": "section[aria-labelledby='services-heading']",
+      "comparedWidth": 2160,
+      "comparedHeight": 764,
+      "mismatchPct": 39.6705,
+      "parityPct": 60.3295,
+      "pass": false,
+      "referencePath": "C:\\Users\\idder\\tmg\\NWS\\section-by-section\\4th section.png",
+      "actualPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-4.png",
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-4-diff.png"
+    },
+    {
+      "section": "section-5",
+      "selector": "section[aria-labelledby='cta-heading']",
+      "comparedWidth": 2160,
+      "comparedHeight": 471,
+      "mismatchPct": 15.7332,
+      "parityPct": 84.2668,
+      "pass": false,
+      "referencePath": "C:\\Users\\idder\\tmg\\NWS\\section-by-section\\last section.png",
+      "actualPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-5.png",
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\rendered\\section-5-diff.png"
+    }
+  ]
+}

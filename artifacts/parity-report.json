@@ -1,0 +1,53 @@
+{
+  "threshold": 95,
+  "generatedAt": "2026-05-26T17:14:16.217Z",
+  "allPass": true,
+  "minParityPct": 100,
+  "results": [
+    {
+      "section": "hero",
+      "comparedWidth": 2160,
+      "comparedHeight": 901,
+      "mismatchPct": 0,
+      "parityPct": 100,
+      "pass": true,
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\parity-hero-diff.png"
+    },
+    {
+      "section": "section-2",
+      "comparedWidth": 2160,
+      "comparedHeight": 901,
+      "mismatchPct": 0,
+      "parityPct": 100,
+      "pass": true,
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\parity-section-2-diff.png"
+    },
+    {
+      "section": "section-3",
+      "comparedWidth": 2160,
+      "comparedHeight": 764,
+      "mismatchPct": 0,
+      "parityPct": 100,
+      "pass": true,
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\parity-section-3-diff.png"
+    },
+    {
+      "section": "section-4",
+      "comparedWidth": 2160,
+      "comparedHeight": 764,
+      "mismatchPct": 0,
+      "parityPct": 100,
+      "pass": true,
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\parity-section-4-diff.png"
+    },
+    {
+      "section": "section-5",
+      "comparedWidth": 2160,
+      "comparedHeight": 503,
+      "mismatchPct": 0,
+      "parityPct": 100,
+      "pass": true,
+      "diffPath": "C:\\Users\\idder\\tmg\\NWS\\landing-site\\artifacts\\parity-section-5-diff.png"
+    }
+  ]
+}
