@@ -14,7 +14,7 @@ export default function TermsPage() {
       <main className={styles.page}>
         <div className={styles.inner}>
           <h1 className={styles.heading}>Terms of Service</h1>
-          <p className={styles.updated}>Last updated: January 2026</p>
+          <p className={styles.updated}>Last updated: May 2026</p>
           <div className={styles.body}>
             <p>By using the NWS website (nws-homes.com), you agree to these terms. If you do not agree, please do not use this site.</p>
             <h2>Use of This Site</h2>

@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       <main className={styles.page}>
         <div className={styles.inner}>
           <h1 className={styles.heading}>Privacy Policy</h1>
-          <p className={styles.updated}>Last updated: January 2026</p>
+          <p className={styles.updated}>Last updated: May 2026</p>
           <div className={styles.body}>
             <p>NWS Custom Homes &amp; Remodeling (&ldquo;NWS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy describes how we collect, use, and protect information when you use our website.</p>
             <h2>Information We Collect</h2>

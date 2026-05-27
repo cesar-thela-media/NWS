@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/ui/site-header";
 import { Footer } from "@/components/landing/footer";
 import { CtaBand } from "@/components/landing/cta-band";
 import { landingContent } from "@/content/landing";
+import { GalleryMosaicClient } from "./gallery-mosaic-client";
 import styles from "./galleries.module.css";
 
 export const metadata: Metadata = {
@@ -118,27 +119,12 @@ export default function GalleriesPage() {
           </div>
         </section>
 
-        {/* ── Featured mosaic ── */}
+        {/* ── Featured mosaic (client — handles lightbox) ── */}
         <section className={styles.mosaicSection}>
           <div className={styles.sectionInner}>
             <p className={styles.eyebrowLight}>FEATURED PROJECTS</p>
             <h2 className={styles.sectionHeadingLight}>A Taste of Our Work</h2>
-            <div className={styles.mosaic}>
-              {FEATURED.map((img, i) => (
-                <div
-                  key={i}
-                  className={`${styles.mosaicItem} ${i === 0 ? styles.mosaicLarge : ""}`}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-              ))}
-            </div>
+            <GalleryMosaicClient images={FEATURED} />
           </div>
         </section>
 

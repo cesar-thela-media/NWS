@@ -49,7 +49,7 @@ export function Hero({ content }: HeroProps) {
                 <span>Menu</span>
               </button>
 
-              <div className={styles.logo} aria-label="NWS">NWS</div>
+              <Link href="/" className={styles.logo} aria-label="NWS — Home">NWS</Link>
 
               <Link
                 className={styles.contactButton}
@@ -104,8 +104,6 @@ export function Hero({ content }: HeroProps) {
               </div>
             </Link>
 
-            {/* ── Slide indicator ── */}
-            <div className={styles.indicator} aria-hidden="true">1</div>
           </div>
         </div>
       </section>

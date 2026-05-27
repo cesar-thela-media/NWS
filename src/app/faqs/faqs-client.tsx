@@ -94,20 +94,30 @@ const FAQ_GROUPS = [
   },
 ];
 
-function AccordionItem({ q, a }: { q: string; a: string }) {
+function AccordionItem({ q, a, itemId }: { q: string; a: string; itemId: string }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-panel-${itemId}`;
+  const btnId   = `faq-btn-${itemId}`;
   return (
     <div className={`${styles.accordionItem} ${open ? styles.accordionOpen : ""}`}>
       <button
+        id={btnId}
         className={styles.accordionBtn}
         onClick={() => setOpen((o) => !o)}
         type="button"
         aria-expanded={open}
+        aria-controls={panelId}
       >
         <span className={styles.accordionQ}>{q}</span>
         <span className={`${styles.accordionIcon} ${open ? styles.accordionIconOpen : ""}`} aria-hidden="true">+</span>
       </button>
-      <div className={styles.accordionBody} aria-hidden={!open}>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={btnId}
+        className={styles.accordionBody}
+        aria-hidden={!open}
+      >
         <p className={styles.accordionA}>{a}</p>
       </div>
     </div>
@@ -160,8 +170,8 @@ export function FaqsClient() {
 
             {/* ── Accordion ── */}
             <div className={styles.accordionList}>
-              {FAQ_GROUPS[activeGroup].faqs.map((item) => (
-                <AccordionItem key={item.q} q={item.q} a={item.a} />
+              {FAQ_GROUPS[activeGroup].faqs.map((item, i) => (
+                <AccordionItem key={item.q} q={item.q} a={item.a} itemId={`${activeGroup}-${i}`} />
               ))}
             </div>
           </div>

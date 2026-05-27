@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { trackLandingEvent } from "@/lib/analytics";
 import type { CtaFooterContent } from "@/lib/types";
 import styles from "./cta-band.module.css";
@@ -21,13 +22,13 @@ export function CtaBand({ content }: CtaBandProps) {
         <p className={styles.body}>{content.body}</p>
 
         <div className={styles.buttonRow}>
-          <a
+          <Link
             className={styles.primaryButton}
-            href="mailto:info@nws-homes.com"
+            href="/contact"
             onClick={() => trackLandingEvent("landing_finalcta_primary_click")}
           >
             {content.primaryCta}
-          </a>
+          </Link>
           <a
             className={styles.secondaryButton}
             href="tel:+12812992309"
