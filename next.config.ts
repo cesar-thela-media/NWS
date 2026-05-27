@@ -2,19 +2,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.nws-homes.com",
-      },
+      // Reliable placeholder photos
       {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
       {
         protocol: "https",
-        hostname: "images.pexels.com",
+        hostname: "picsum.photos",
+      },
+      // Production — NWS own CDN (swap in before launch)
+      {
+        protocol: "https",
+        hostname: "www.nws-homes.com",
       },
     ],
   },

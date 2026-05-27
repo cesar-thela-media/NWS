@@ -11,9 +11,8 @@ interface CtaBandProps {
 export function CtaBand({ content }: CtaBandProps) {
   return (
     <section className={styles.section} id="final-cta" aria-labelledby="cta-heading">
-      <div className={styles.decorativeWord} aria-hidden="true">
-        NWS
-      </div>
+      {/* Decorative watermark */}
+      <div className={styles.watermark} aria-hidden="true">NWS</div>
 
       <div className={styles.inner}>
         <h2 id="cta-heading" className={styles.heading}>

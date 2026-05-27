@@ -1,7 +1,6 @@
+/* Ensures the landing page root matches the dark body background.
+   overflow-x and base color are already set on body in globals.css. */
 .page {
-  background: #0b0d10;
-  color: #f5f3ef;
-  width: min(100%, 2160px);
-  margin: 0 auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  background: var(--dark, #0c0f14);
+  width: 100%;
 }

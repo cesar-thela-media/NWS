@@ -1,0 +1,99 @@
+.main {
+  background: var(--dark, #0c0f14);
+  min-height: calc(100dvh - 68px - 200px); /* viewport minus header + footer */
+  display: grid;
+  place-items: center;
+  padding: clamp(52px, 4vw, 88px) clamp(20px, 2.6vw, 56px);
+}
+
+.inner {
+  text-align: center;
+  max-width: 520px;
+}
+
+.code {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(96px, 16vw, 200px);
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.04);
+  letter-spacing: -0.04em;
+  margin-bottom: -0.2em;
+  user-select: none;
+}
+
+.heading {
+  font-size: clamp(30px, 3.2vw, 54px);
+  color: var(--text-light, #f4f1ec);
+  margin-bottom: 14px;
+}
+
+.body {
+  font-size: clamp(15px, 1vw, 19px);
+  color: var(--text-muted-light, #9e9b95);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 13px 28px;
+  background: #fff;
+  color: var(--dark, #0c0f14);
+  font-size: clamp(13px, 0.84vw, 17px);
+  font-weight: 500;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.outlineBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 13px 28px;
+  background: transparent;
+  color: var(--text-light, #f4f1ec);
+  font-size: clamp(13px, 0.84vw, 17px);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  transition: border-color 140ms ease, transform 140ms ease;
+}
+
+.outlineBtn:hover {
+  border-color: var(--gold-soft, #d4a858);
+  color: var(--gold-soft, #d4a858);
+  transform: translateY(-1px);
+}
+
+.quickLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+
+.quickLinks a {
+  font-size: 14px;
+  color: var(--text-muted-light, #9e9b95);
+  letter-spacing: 0.04em;
+  transition: color 140ms ease;
+}
+
+.quickLinks a:hover {
+  color: var(--gold-soft, #d4a858);
+}

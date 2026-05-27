@@ -41,48 +41,6 @@ export interface ServicesContent {
   testimonialImage: string;
 }
 
-export interface ReviewsContent {
-  eyebrow: string;
-  headline: string;
-  body: string;
-  rating: string;
-  reviewCta: string;
-  reviewCtaUrl: string;
-  cards: Array<{
-    name: string;
-    date: string;
-    quote: string;
-    source: string;
-  }>;
-  proof: {
-    value: string;
-    label: string;
-    body: string;
-  };
-}
-
-export interface ContactContent {
-  eyebrow: string;
-  heading: string;
-  body: string;
-  supportEmail: string;
-  officePhone: string;
-  mobilePhone: string;
-  hours: string[];
-  mapImage: string;
-  formHeading: string;
-  formIntro: string;
-  serviceOptions: string[];
-}
-
-export interface AreasContent {
-  eyebrow: string;
-  heading: string;
-  body: string;
-  areas: string[];
-  closingNote: string;
-}
-
 export interface CtaFooterContent {
   heading: string;
   body: string;
@@ -96,8 +54,5 @@ export interface LandingContent {
   about: AboutContent;
   transformation: TransformationContent;
   services: ServicesContent;
-  reviews: ReviewsContent;
-  contact: ContactContent;
-  areas: AreasContent;
   ctaFooter: CtaFooterContent;
 }

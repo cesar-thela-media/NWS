@@ -1,7 +1,8 @@
+/* ── Shell ── */
 .section {
   position: relative;
-  background: radial-gradient(circle at 20% 10%, #232a36 0%, #11151d 52%, #0b0e12 100%);
-  padding: clamp(56px, 3.9vw, 84px) clamp(20px, 2.7vw, 58px) clamp(34px, 2.2vw, 44px);
+  background: radial-gradient(circle at 22% 12%, #242b38 0%, #111620 52%, #0b0e12 100%);
+  padding: clamp(52px, 3.8vw, 82px) clamp(20px, 2.7vw, 58px) clamp(32px, 2.2vw, 48px);
 }
 
 .inner {
@@ -11,30 +12,31 @@
   margin: 0 auto;
 }
 
+/* ── Eyebrow + heading ── */
 .eyebrow {
-  font-size: clamp(15px, 0.82vw, 19px);
-  letter-spacing: 0.1em;
-  color: #9ba7bc;
+  font-size: clamp(12px, 0.78vw, 17px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted-light, #9e9b95);
   font-weight: 600;
 }
 
 .heading {
   margin-top: 8px;
-  font-size: var(--text-display-section);
-  line-height: 1;
-  color: #f5f3ef;
-  max-width: 9ch;
+  font-size: clamp(36px, 5.4vw, 88px);
+  line-height: 1.02;
+  color: var(--text-light, #f4f1ec);
 }
 
+/* ── Compare frame — takes up ~65% of section height like the reference ── */
 .compareFrame {
   position: relative;
-  margin-top: 28px;
-  height: clamp(300px, 19.6vw, 424px);
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  margin-top: clamp(20px, 1.8vw, 30px);
+  height: clamp(280px, 26vw, 500px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.44);
 }
 
 .beforeImage,
@@ -46,6 +48,7 @@
   object-position: left center;
 }
 
+/* Clip to reveal just the right portion */
 .afterLayer {
   position: absolute;
   inset: 0 0 0 auto;
@@ -56,191 +59,159 @@
   object-position: right center;
 }
 
+/* Labels */
 .beforeLabel,
 .afterLabel {
   position: absolute;
-  top: 16px;
+  top: 14px;
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(22px, 1.2vw, 34px);
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(18px, 1.1vw, 28px);
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.88);
   z-index: 3;
+  pointer-events: none;
 }
 
-.beforeLabel {
-  left: 16px;
-}
+.beforeLabel { left: 18px; }
+.afterLabel  { right: 18px; }
 
-.afterLabel {
-  right: 16px;
-}
-
+/* Divider line */
 .sliderLine {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 2px;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.7);
   pointer-events: none;
   z-index: 4;
 }
 
+/* Circular drag handle */
 .sliderHandle {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
   display: grid;
   place-items: center;
   background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   color: #101419;
-  font-size: 22px;
+  font-size: 18px;
   pointer-events: none;
   z-index: 5;
+  letter-spacing: -2px;
 }
 
+/* Transparent range input sits on top of everything */
 .sliderInput {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   opacity: 0.001;
   cursor: ew-resize;
   z-index: 8;
+  appearance: none;
 }
 
 .sliderInput:focus-visible {
-  opacity: 0.02;
+  opacity: 0.04;
+  outline: none;
 }
 
+/* ── Chips row ── */
 .chips {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.2vw, 20px);
   list-style: none;
 }
 
 .chip {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(255, 255, 255, 0.04);
-  min-height: 64px;
-  display: grid;
-  grid-template-columns: 42px 1fr;
+  display: flex;
   align-items: center;
-  justify-content: center;
   gap: 14px;
-  padding: 0 22px;
-  font-size: var(--text-small);
-  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  border: 1px solid var(--line-light, rgba(255, 255, 255, 0.16));
+  background: rgba(255, 255, 255, 0.04);
+  min-height: 60px;
+  padding: 0 20px;
+  font-size: clamp(13px, 0.84vw, 18px);
+  color: var(--text-light, #f4f1ec);
+  backdrop-filter: blur(10px);
 }
 
 .chipIcon {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(244, 205, 122, 0.5);
-  color: #e4c586;
-  font-size: 21px;
+  border: 1px solid rgba(244, 205, 122, 0.46);
+  color: var(--gold-soft, #d4a858);
+  font-size: 18px;
 }
 
-.chipText {
-  white-space: nowrap;
-}
-
+/* ── Case study link ── */
 .caseStudyLink {
-  margin: 18px auto 0;
-  color: #f4cd7a;
-  font-size: clamp(22px, 1.7vw, 32px);
-  text-decoration: none;
+  align-self: center;
+  margin-top: clamp(14px, 1.4vw, 22px);
+  color: var(--gold-warm, #f4cd7a);
+  font-size: clamp(16px, 1.3vw, 26px);
+  font-family: var(--font-display), Georgia, serif;
+  transition: opacity 150ms ease;
 }
 
-.caseStudyLink::after {
-  content: " →";
-}
+.caseStudyLink:hover { opacity: 0.78; }
 
+/* ── 1440 px+ ── */
 @media (min-width: 1440px) {
-  .section {
-    min-height: 764px;
-    padding: 66px 58px 20px;
-  }
+  .section { padding: 66px 58px 24px; }
 
-  .eyebrow {
-    font-size: 22px;
-  }
-
-  .heading {
-    font-size: 98px;
-    margin-top: 10px;
-  }
+  .heading { font-size: 88px; }
 
   .compareFrame {
-    margin-top: 28px;
-    height: 422px;
+    height: 490px;
     border-radius: 22px;
   }
 
   .sliderHandle {
-    width: 68px;
-    height: 68px;
-    font-size: 24px;
-  }
-
-  .chips {
-    margin-top: 18px;
-    gap: 28px;
-    grid-template-columns: repeat(3, minmax(420px, 1fr));
-  }
-
-  .chip {
-    min-height: 62px;
+    width: 64px;
+    height: 64px;
     font-size: 22px;
   }
 
-  .caseStudyLink {
-    margin-top: 20px;
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 900px) {
-  .heading {
-    max-width: 13ch;
-  }
-
   .chips {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    padding: 44px 20px 32px;
-  }
-
-  .compareFrame {
     margin-top: 20px;
-    height: 260px;
-    border-radius: 14px;
-  }
-
-  .chips {
-    margin-top: 18px;
-    gap: 10px;
+    gap: 26px;
   }
 
   .chip {
-    min-height: 50px;
+    min-height: 64px;
+    font-size: 20px;
   }
+}
+
+/* ── Tablet ── */
+@media (max-width: 900px) {
+  .chips { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .section { padding: 42px 18px 30px; }
+
+  .compareFrame {
+    height: 230px;
+    border-radius: 14px;
+  }
+
+  .chip { min-height: 50px; }
 }

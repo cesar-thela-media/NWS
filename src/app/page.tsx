@@ -5,22 +5,22 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "NWS Custom Homes & Remodeling",
   url: "https://www.nws-homes.com",
-  areaServed: [
-    "Richmond",
-    "Sugar Land",
-    "Katy",
-    "Fulshear",
-    "West Side of Houston",
-    "Cinco Ranch",
-  ],
   telephone: "+1-281-299-2309",
   email: "info@nws-homes.com",
+  areaServed: ["Richmond", "Sugar Land", "Katy", "Fulshear", "Houston"],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "1234 Monroe Rd, Ste 500",
     addressLocality: "Richmond",
     addressRegion: "TX",
+    postalCode: "77469",
     addressCountry: "US",
   },
+  priceRange: "$$",
+  sameAs: [
+    "https://www.facebook.com/NWSHomes/",
+    "https://www.instagram.com/nwshomes/",
+  ],
 };
 
 export default function Home() {
@@ -34,4 +34,3 @@ export default function Home() {
     </>
   );
 }
-

@@ -1,66 +1,104 @@
+/* ════════════════════════════════════════
+   Design tokens — NWS Custom Homes & Remodeling
+   Precise palette extracted from reference design.
+   ════════════════════════════════════════ */
 :root {
-  --bg-dark: #0b0d10;
-  --bg-dark-alt: #11151b;
-  --bg-light: #f6f4f1;
-  --surface-glass: rgba(255, 255, 255, 0.08);
-  --surface-card: #ffffff;
-  --text-primary-light: #f5f3ef;
-  --text-primary-dark: #1e2127;
-  --text-muted-light: #d3d0ca;
-  --text-muted-dark: #5e6269;
-  --accent-gold: #a67c45;
-  --accent-gold-soft: #b68b54;
-  --line-light: rgba(255, 255, 255, 0.45);
-  --line-dark: rgba(30, 33, 39, 0.18);
+  /* ── Core palette ─────────────────────────────────── */
+  /* Background creams */
+  --cream:        #f4f1ec;   /* primary light bg — warm off-white */
+  --cream-alt:    #f0ede6;   /* slightly deeper cream for alternating sections */
+  --cream-border: rgba(166, 124, 69, 0.18);
 
-  --radius-xs: 10px;
-  --radius-sm: 14px;
-  --radius-md: 18px;
-  --radius-lg: 22px;
-  --radius-xl: 28px;
-  --radius-pill: 999px;
+  /* Dark backgrounds */
+  --dark:         #0c0f14;   /* deepest dark — CTA band, footer core */
+  --dark-alt:     #111620;   /* slightly lifted dark — transformation section */
+  --dark-warm:    #1a1208;   /* warm near-black (hero overlay base) */
+  --dark-card:    #131720;   /* card/chip backgrounds on dark sections */
 
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.18);
-  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.24);
-  --shadow-chip: 0 6px 20px rgba(0, 0, 0, 0.22);
+  /* Gold accent system */
+  --gold:         #a07840;   /* primary gold — rules, icons, borders */
+  --gold-mid:     #c09050;   /* mid-weight gold — hover states */
+  --gold-soft:    #d4a858;   /* soft gold — muted labels, sub-accents */
+  --gold-warm:    #f4cd7a;   /* warm highlight gold — CTA links, chip icons */
 
-  --text-display-hero: clamp(48px, 11vw, 114px);
-  --text-display-section: clamp(38px, 9vw, 98px);
-  --text-title-card: clamp(36px, 2vw, 52px);
-  --text-body-lg: clamp(26px, 5vw, 50px);
-  --text-body: clamp(18px, 1.05vw, 28px);
-  --text-small: clamp(15px, 0.85vw, 22px);
-  --text-micro: clamp(13px, 0.65vw, 18px);
+  /* Text */
+  --text-light:       #f4f1ec;   /* primary text on dark bg */
+  --text-light-sub:   #c8c4bc;   /* secondary text on dark bg */
+  --text-muted-light: #9e9b95;   /* muted/tertiary on dark */
+  --text-dark:        #1c1f27;   /* primary text on light bg */
+  --text-dark-sub:    #505762;   /* secondary text on light bg */
+  --text-muted-dark:  #7a8290;   /* muted text on light bg — eyebrows */
+
+  /* Dividers */
+  --line-dark:    rgba(30, 33, 39, 0.15);
+  --line-light:   rgba(255, 255, 255, 0.16);
+  --line-gold:    rgba(160, 120, 64, 0.32);
+
+  /* ── Radii ────────────────────────────────────────── */
+  --r-xs:   6px;
+  --r-sm:   10px;
+  --r-md:   16px;
+  --r-lg:   22px;
+  --r-pill: 999px;
+
+  /* ── Shadows ──────────────────────────────────────── */
+  --shadow-sm:   0 4px 14px rgba(0, 0, 0, 0.13);
+  --shadow-md:   0 10px 30px rgba(0, 0, 0, 0.20);
+  --shadow-lg:   0 20px 56px rgba(0, 0, 0, 0.28);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.22);
+  --shadow-gold: 0 8px 28px rgba(160, 120, 64, 0.22);
+
+  /* ── Fluid type scale ─────────────────────────────── */
+  --text-hero:    clamp(44px, 8.4vw, 108px);
+  --text-display: clamp(36px, 5.6vw, 88px);
+  --text-title:   clamp(28px, 2.8vw, 54px);
+  --text-body-lg: clamp(18px, 1.3vw, 26px);
+  --text-body:    clamp(14px, 0.96vw, 20px);
+  --text-sm:      clamp(13px, 0.8vw, 17px);
+  --text-xs:      clamp(11px, 0.66vw, 14px);
+
+  /* ── Transitions ──────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast:   140ms;
+  --t-med:    240ms;
+  --t-slow:   380ms;
+
+  /* ── Layout ───────────────────────────────────────── */
+  --max-w:    1288px;
+  --gutter:   clamp(20px, 2.6vw, 56px);
+  --section-pad-y: clamp(52px, 4.2vw, 88px);
 }
 
-* {
+/* ════════════════════════════════════════
+   Reset
+   ════════════════════════════════════════ */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html,
 body {
   width: 100%;
   overflow-x: hidden;
-  background: var(--bg-dark);
+  background: var(--dark);
+  scroll-behavior: smooth;
 }
 
 body {
-  min-height: 100vh;
-  color: var(--text-primary-light);
-  font-family: var(--font-ui), "Segoe UI", Arial, sans-serif;
+  min-height: 100dvh;
+  color: var(--text-light);
+  font-family: var(--font-ui), "Segoe UI", system-ui, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-display), Georgia, serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 400;
 }
 
 a {
@@ -68,7 +106,24 @@ a {
   text-decoration: none;
 }
 
-.srOnly {
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════
+   Utilities
+   ════════════════════════════════════════ */
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -79,3 +134,4 @@ a {
   white-space: nowrap;
   border: 0;
 }
+
