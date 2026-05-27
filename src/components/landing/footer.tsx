@@ -15,6 +15,7 @@ export function Footer() {
           <p className={styles.tagline}>Built on Integrity. Designed for Life.</p>
 
           <nav className={styles.socials} aria-label="Social media links">
+            {/* ⚠️ TODO: Verify all social URLs with client before launch */}
             <a
               href="https://www.facebook.com/NWSHomes/"
               target="_blank"

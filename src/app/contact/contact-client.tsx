@@ -20,26 +20,70 @@ const SERVICES = [
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function ContactPageClient() {
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
+interface FormFields {
+  name:    string;
+  email:   string;
+  phone:   string;
+  service: string;
+  message: string;
+}
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+interface FieldErrors {
+  name?:  string;
+  email?: string;
+}
+
+const EMPTY_FORM: FormFields = { name: "", email: "", phone: "", service: "", message: "" };
+
+export function ContactPageClient() {
+  const [status,      setStatus]      = useState<FormStatus>("idle");
+  const [form,        setForm]        = useState<FormFields>(EMPTY_FORM);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [serverError, setServerError] = useState("");
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+    /* Clear the field error as the user types */
+    if (name in fieldErrors) {
+      setFieldErrors((errs) => { const next = { ...errs }; delete next[name as keyof FieldErrors]; return next; });
+    }
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setFieldErrors({});
+    setServerError("");
     setStatus("submitting");
-    /* Simulate submit — replace with real API call or form service */
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus("success");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 422 && data.fieldErrors) {
+        setFieldErrors(data.fieldErrors);
+        setStatus("idle");
+        return;
+      }
+
+      if (!res.ok) {
+        setServerError(data.error ?? "Something went wrong. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setServerError("Unable to reach the server. Please call us at (281) 299-2309.");
+      setStatus("error");
+    }
   }
 
   return (
@@ -97,6 +141,7 @@ export function ContactPageClient() {
                   <span className={styles.contactIcon} aria-hidden="true">⊙</span>
                   <div>
                     <p className={styles.contactLabel}>Office</p>
+                    {/* ⚠️ TODO: Replace with real NWS address before launch */}
                     <p className={styles.contactValue}>1234 Monroe Rd, Ste 500<br />Richmond, TX 77469</p>
                   </div>
                 </li>
@@ -118,7 +163,7 @@ export function ContactPageClient() {
             {/* ── Right: form ── */}
             <div className={styles.formCol}>
               {status === "success" ? (
-                <div className={styles.successMsg}>
+                <div className={styles.successMsg} role="status" aria-live="polite">
                   <span className={styles.successIcon} aria-hidden="true">✓</span>
                   <h3 className={styles.successTitle}>Message Received!</h3>
                   <p className={styles.successBody}>
@@ -126,7 +171,7 @@ export function ContactPageClient() {
                   </p>
                   <button
                     className={styles.resetBtn}
-                    onClick={() => { setStatus("idle"); setForm({ name: "", email: "", phone: "", service: "", message: "" }); }}
+                    onClick={() => { setStatus("idle"); setForm(EMPTY_FORM); }}
                     type="button"
                   >
                     Send Another Message
@@ -136,6 +181,13 @@ export function ContactPageClient() {
                 <form className={styles.form} onSubmit={handleSubmit} noValidate>
                   <h3 className={styles.formTitle}>Free Consultation Request</h3>
                   <p className={styles.formSub}>Typically responds within 24 hours</p>
+
+                  {/* Server-level error banner */}
+                  {status === "error" && serverError && (
+                    <div className={styles.errorBanner} role="alert" aria-live="assertive">
+                      <span aria-hidden="true">⚠</span> {serverError}
+                    </div>
+                  )}
 
                   <div className={styles.fieldRow}>
                     <div className={styles.field}>
@@ -148,9 +200,14 @@ export function ContactPageClient() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="Jane Smith"
-                        className={styles.input}
+                        className={`${styles.input} ${fieldErrors.name ? styles.inputError : ""}`}
                         autoComplete="name"
+                        aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                        aria-invalid={!!fieldErrors.name}
                       />
+                      {fieldErrors.name && (
+                        <p id="name-error" className={styles.fieldError} role="alert">{fieldErrors.name}</p>
+                      )}
                     </div>
                     <div className={styles.field}>
                       <label htmlFor="phone" className={styles.label}>Phone Number</label>
@@ -177,9 +234,14 @@ export function ContactPageClient() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="jane@example.com"
-                      className={styles.input}
+                      className={`${styles.input} ${fieldErrors.email ? styles.inputError : ""}`}
                       autoComplete="email"
+                      aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                      aria-invalid={!!fieldErrors.email}
                     />
+                    {fieldErrors.email && (
+                      <p id="email-error" className={styles.fieldError} role="alert">{fieldErrors.email}</p>
+                    )}
                   </div>
 
                   <div className={styles.field}>
@@ -215,8 +277,13 @@ export function ContactPageClient() {
                     type="submit"
                     className={styles.submitBtn}
                     disabled={status === "submitting"}
+                    aria-busy={status === "submitting"}
                   >
-                    {status === "submitting" ? "Sending…" : "Request Free Consultation →"}
+                    {status === "submitting" ? (
+                      <><span className={styles.spinner} aria-hidden="true" /> Sending…</>
+                    ) : (
+                      "Request Free Consultation →"
+                    )}
                   </button>
 
                   <p className={styles.formDisclaimer}>

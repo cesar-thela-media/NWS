@@ -10,16 +10,16 @@ const localBusinessSchema = {
   areaServed: ["Richmond", "Sugar Land", "Katy", "Fulshear", "Houston"],
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1234 Monroe Rd, Ste 500",
+    streetAddress: "1234 Monroe Rd, Ste 500", // ⚠️ TODO: Replace with real NWS address before launch
     addressLocality: "Richmond",
     addressRegion: "TX",
-    postalCode: "77469",
+    postalCode: "77469",               // ⚠️ TODO: Confirm real zip
     addressCountry: "US",
   },
   priceRange: "$$",
   sameAs: [
-    "https://www.facebook.com/NWSHomes/",
-    "https://www.instagram.com/nwshomes/",
+    "https://www.facebook.com/NWSHomes/",    // ⚠️ TODO: Confirm real Facebook URL
+    "https://www.instagram.com/nwshomes/",  // ⚠️ TODO: Confirm real Instagram handle
   ],
 };
 

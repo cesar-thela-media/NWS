@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/ui/site-header";
 import { Footer } from "@/components/landing/footer";
 import { CtaBand } from "@/components/landing/cta-band";
 import { landingContent } from "@/content/landing";
+import { GalleryGridClient } from "./gallery-grid-client";
 import styles from "./gallery-type.module.css";
 
 interface GalleryCategory {
@@ -108,25 +109,10 @@ export default async function GalleryTypePage({ params }: Props) {
           </div>
         </section>
 
-        {/* ── Photo grid ── */}
+        {/* ── Photo grid (client — handles lightbox) ── */}
         <section className={styles.gridSection}>
           <div className={styles.gridInner}>
-            <div className={styles.photoGrid}>
-              {gallery.images.map((img, i) => (
-                <div key={i} className={`${styles.photoItem} ${i % 7 === 0 ? styles.photoWide : ""}`}>
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                  />
-                  {img.label && (
-                    <div className={styles.photoLabel}>{img.label}</div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <GalleryGridClient images={gallery.images} />
           </div>
         </section>
 

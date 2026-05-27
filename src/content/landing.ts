@@ -60,7 +60,7 @@ export const landingContent: LandingContent = {
       bottom: PICS.aboutBot,
     },
     stats: [
-      { value: "35+",  label: "Years"     },
+      { value: "18+",  label: "Years"      },
       { value: "500+", label: "Projects"  },
       { value: "98%",  label: "Satisfied" },
       { value: "8",    label: "Cities"    },

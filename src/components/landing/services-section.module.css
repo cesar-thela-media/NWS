@@ -121,7 +121,7 @@
   position: absolute;
   left: -4px;
   top: 0;
-  font-family: Georgia, serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: clamp(140px, 13vw, 260px);
   color: rgba(30, 33, 39, 0.08);
   line-height: 1;
