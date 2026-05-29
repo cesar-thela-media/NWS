@@ -134,7 +134,7 @@ export function FaqsClient() {
         {/* ── Hero ── */}
         <section className={styles.pageHero}>
           <Image
-            src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=80&auto=format&fit=crop"
+            src="https://picsum.photos/seed/nws-faqs-hero/1400/800"
             alt="NWS consultation"
             fill
             priority

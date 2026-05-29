@@ -22,7 +22,7 @@ export default function ServicesPage() {
         {/* ── Page Hero ── */}
         <section className={styles.pageHero}>
           <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80&auto=format&fit=crop"
+            src="https://picsum.photos/seed/nws-services-hero/1600/900"
             alt="NWS custom remodeling work"
             fill
             priority

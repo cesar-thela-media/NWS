@@ -93,7 +93,7 @@ export function ContactPageClient() {
         {/* ── Page Hero ── */}
         <section className={styles.pageHero}>
           <Image
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80&auto=format&fit=crop"
+            src="https://picsum.photos/seed/nws-contact-hero/1400/800"
             alt="NWS project consultation"
             fill
             priority
@@ -126,8 +126,15 @@ export function ContactPageClient() {
                 <li className={styles.contactItem}>
                   <span className={styles.contactIcon} aria-hidden="true">☎</span>
                   <div>
-                    <p className={styles.contactLabel}>Phone</p>
+                    <p className={styles.contactLabel}>Office</p>
                     <a href="tel:+12812992309" className={styles.contactValue}>(281) 299-2309</a>
+                  </div>
+                </li>
+                <li className={styles.contactItem}>
+                  <span className={styles.contactIcon} aria-hidden="true">☎</span>
+                  <div>
+                    <p className={styles.contactLabel}>Mobile</p>
+                    <a href="tel:+17138846571" className={styles.contactValue}>(713) 884-6571</a>
                   </div>
                 </li>
                 <li className={styles.contactItem}>
@@ -141,22 +148,21 @@ export function ContactPageClient() {
                   <span className={styles.contactIcon} aria-hidden="true">⊙</span>
                   <div>
                     <p className={styles.contactLabel}>Office</p>
-                    {/* ⚠️ TODO: Replace with real NWS address before launch */}
-                    <p className={styles.contactValue}>1234 Monroe Rd, Ste 500<br />Richmond, TX 77469</p>
+                    <p className={styles.contactValue}>Richmond, TX 77469</p>
                   </div>
                 </li>
                 <li className={styles.contactItem}>
                   <span className={styles.contactIcon} aria-hidden="true">◷</span>
                   <div>
                     <p className={styles.contactLabel}>Hours</p>
-                    <p className={styles.contactValue}>Mon–Fri: 8am – 6pm<br />Sat: 9am – 2pm</p>
+                    <p className={styles.contactValue}>Mon–Fri: 8am – 6pm<br />Sat: 8am – 12pm<br />Sun: Closed</p>
                   </div>
                 </li>
               </ul>
 
               <div className={styles.areasBox}>
                 <p className={styles.areasLabel}>Areas We Serve</p>
-                <p className={styles.areasText}>Richmond · Sugar Land · Katy · Fulshear · Cinco Ranch · Missouri City · Stafford · Pearland · Greater Houston Area</p>
+                <p className={styles.areasText}>Richmond · Sugar Land · Katy · Fulshear · Cinco Ranch · Missouri City · Stafford · Pearland · Rosenberg · Weston Lakes · Park Row · West Houston · Greater Houston Area</p>
               </div>
             </div>
 
@@ -292,6 +298,22 @@ export function ContactPageClient() {
                 </form>
               )}
             </div>
+          </div>
+        </section>
+
+        {/* ── Map ── */}
+        <section className={styles.mapSection}>
+          <div className={styles.mapInner}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d222220.22117293508!2d-95.93028261328123!3d29.558560449999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e0cb9b66330b%3A0x1598bb76ef99c14!2sRichmond%2C%20TX!5e0!3m2!1sen!2sus!4v1!4m4!1m3!2m2!1d-95.7589!2d29.5819"
+              width="100%"
+              height="400"
+              style={{ border: 0, borderRadius: "12px" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="NWS Service Area — Richmond, TX"
+            />
           </div>
         </section>
       </main>

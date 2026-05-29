@@ -10,10 +10,10 @@ const localBusinessSchema = {
   areaServed: ["Richmond", "Sugar Land", "Katy", "Fulshear", "Houston"],
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1234 Monroe Rd, Ste 500", // ⚠️ TODO: Replace with real NWS address before launch
+    streetAddress: "Richmond, TX 77469", // Contact us for our office location
     addressLocality: "Richmond",
     addressRegion: "TX",
-    postalCode: "77469",               // ⚠️ TODO: Confirm real zip
+    postalCode: "77469",
     addressCountry: "US",
   },
   priceRange: "$$",

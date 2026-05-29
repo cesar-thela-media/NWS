@@ -247,6 +247,10 @@
 
 @media (max-width: 600px) {
   .whyInner { flex-wrap: wrap; }
-  .whyStat { width: 50%; }
+  .whyStat { width: 50%; padding: 20px 12px; }
+  .whyDivider:nth-child(2),
+  .whyDivider:nth-child(4) { display: none; }
+  .whyStat:nth-child(3),
+  .whyStat:nth-child(5) { border-left: none; }
   .whyDivider { display: none; }
 }

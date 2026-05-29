@@ -6,6 +6,7 @@ export interface HeroContent {
   recentLabel: string;
   recentProject: string;
   backgroundImage: string;
+  slideshowImages?: string[];
   recentImage: string;
 }
 
@@ -41,6 +42,15 @@ export interface ServicesContent {
   testimonialImage: string;
 }
 
+export interface Testimonial {
+  name: string;
+  date: string;
+  text: string;
+  rating: number;
+  source: string;
+  initial: string;
+}
+
 export interface CtaFooterContent {
   heading: string;
   body: string;
@@ -55,4 +65,5 @@ export interface LandingContent {
   transformation: TransformationContent;
   services: ServicesContent;
   ctaFooter: CtaFooterContent;
+  testimonials: Testimonial[];
 }

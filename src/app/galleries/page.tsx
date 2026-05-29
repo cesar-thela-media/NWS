@@ -26,14 +26,14 @@ const GALLERY_CATEGORIES = [
     slug: "kitchen-remodeling",
     title: "Kitchen Remodeling",
     count: 38,
-    coverImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop",
+    coverImage: "https://picsum.photos/seed/nws-gallery-kitchen/800/600",
     description: "Full gut remodels, cabinet refreshes, and open concept transformations.",
   },
   {
     slug: "bathroom-remodeling",
     title: "Bathroom Remodeling",
     count: 31,
-    coverImage: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80&auto=format&fit=crop",
+    coverImage: "https://picsum.photos/seed/nws-gallery-bath/800/600",
     description: "Spa-inspired master baths, tub-to-shower conversions, and more.",
   },
   {
@@ -50,14 +50,14 @@ function pic(seed: string) {
 }
 
 const FEATURED = [
-  { src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80&auto=format&fit=crop", alt: "Bright open kitchen" },
-  { src: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&q=80&auto=format&fit=crop", alt: "Luxury bathroom" },
+  { src: "https://picsum.photos/seed/nws-featured-kitchen/700/525", alt: "Bright open kitchen" },
+  { src: "https://picsum.photos/seed/nws-featured-bath/700/525", alt: "Luxury bathroom" },
   { src: pic("nws-f1"), alt: "Custom home exterior" },
-  { src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80&auto=format&fit=crop", alt: "Open living room" },
-  { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&auto=format&fit=crop", alt: "Open concept dining" },
+  { src: "https://picsum.photos/seed/nws-featured-living/700/525", alt: "Open living room" },
+  { src: "https://picsum.photos/seed/nws-featured-dining/700/525", alt: "Open concept dining" },
   { src: pic("nws-f2"), alt: "Master bedroom suite" },
   { src: pic("nws-f3"), alt: "Room addition interior" },
-  { src: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop", alt: "Dark modern kitchen" },
+  { src: "https://picsum.photos/seed/nws-featured-dark-kitchen/700/525", alt: "Dark modern kitchen" },
 ];
 
 export default function GalleriesPage() {
@@ -68,7 +68,7 @@ export default function GalleriesPage() {
         {/* ── Hero ── */}
         <section className={styles.pageHero}>
           <Image
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=80&auto=format&fit=crop"
+            src="https://picsum.photos/seed/nws-galleries-hero/1600/900"
             alt="NWS portfolio"
             fill
             priority

@@ -248,4 +248,16 @@
 
 @media (max-width: 760px) {
   .stripInner { flex-direction: column; align-items: flex-start; }
+
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab { white-space: nowrap; flex-shrink: 0; }
 }

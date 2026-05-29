@@ -35,22 +35,33 @@
   color: var(--text-dark, #1a1f27);
 }
 
-/* ── Cards list ── */
+/* ── Cards carousel ── */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(8px, 0.9vw, 14px);
+  display: flex;
+  gap: clamp(10px, 1vw, 16px);
   list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
 }
 
 /* Tall portrait cards — ~2:3 to match the reference */
 .card {
   position: relative;
+  flex: 0 0 clamp(180px, 17vw, 240px);
   aspect-ratio: 2 / 3;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
   cursor: pointer;
+  scroll-snap-align: start;
+  transition: box-shadow 300ms ease, transform 300ms ease;
 }
 
 .cardLink {
@@ -59,13 +70,18 @@
   inset: 0;
 }
 
+.card:hover {
+  box-shadow: var(--shadow-lg, 0 20px 56px rgba(0, 0, 0, 0.28));
+  transform: translateY(-4px);
+}
+
 .card:hover .cardImage {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .cardImage {
   object-fit: cover;
-  transition: transform 420ms ease;
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cardOverlay {
@@ -96,6 +112,21 @@
   font-size: clamp(16px, 1vw, 20px);
   flex-shrink: 0;
   margin-bottom: 2px;
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  margin-top: 12px;
+  font-size: clamp(11px, 0.7vw, 13px);
+  color: var(--text-muted-dark, #7a8290);
+  letter-spacing: 0.06em;
+  text-align: center;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
 }
 
 /* ── Testimonial band ── */
@@ -225,15 +256,15 @@
   }
 }
 
-/* ── Tablet: stack copy above cards, wrap to 3 ── */
+/* ── Tablet: stack copy above cards ── */
 @media (max-width: 1300px) {
   .topBand { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { flex: 0 0 clamp(200px, 28vw, 260px); }
 }
 
 /* ── Small tablet ── */
 @media (max-width: 900px) {
-  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card { flex: 0 0 clamp(180px, 40vw, 280px); }
   .testimonialBand { grid-template-columns: 1fr; }
   .mediaCol {
     min-height: 300px;
@@ -244,7 +275,7 @@
 
 /* ── Mobile ── */
 @media (max-width: 580px) {
-  .cards { grid-template-columns: 1fr; }
+  .card { flex: 0 0 70vw; }
 
   .quoteCol {
     padding: 20px 18px 18px 30px;

@@ -16,6 +16,8 @@ const NAV = [
       { label: "Custom Home Building",    href: "/services/custom-home-building" },
       { label: "Kitchen Remodeling",      href: "/services/kitchen-remodeling" },
       { label: "Bathroom Remodeling",     href: "/services/bathroom-remodeling" },
+      { label: "Shower Remodel",          href: "/services/shower-remodel" },
+      { label: "Bathtub Remodel",         href: "/services/bathtub-remodeling" },
       { label: "Room Additions",          href: "/services/room-additions" },
       { label: "Open Concept Remodeling", href: "/services/open-concept-remodeling" },
       { label: "Whole Home Remodeling",   href: "/services/whole-home-remodeling" },

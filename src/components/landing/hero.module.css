@@ -13,6 +13,52 @@
 .image {
   object-fit: cover;
   object-position: center 52%;
+  will-change: opacity, transform;
+}
+
+.imageActive {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 8000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.imageInactive {
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Slideshow dots ── */
+.slideDots {
+  position: absolute;
+  bottom: clamp(20px, 2.2vw, 38px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  gap: 10px;
+}
+
+.slideDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  background-clip: content-box;
+  transition: background 240ms ease, border-color 240ms ease;
+}
+
+.slideDot:hover {
+  border-color: #fff;
+}
+
+.slideDotActive {
+  background: #fff;
+  border-color: #fff;
 }
 
 /* Warm brown-black gradient — heavy left, fades right so photo shines through */
@@ -62,6 +108,11 @@
   font-size: clamp(14px, 0.88vw, 20px);
   cursor: pointer;
   letter-spacing: 0.02em;
+  transition: color 200ms ease;
+}
+
+.menuButton:hover {
+  color: var(--gold-soft, #d4a858);
 }
 
 .hamburger {
@@ -217,6 +268,36 @@
   background: rgba(255, 255, 255, 0.06);
   font-family: var(--font-ui), sans-serif;
   letter-spacing: 0;
+}
+
+/* ── Scroll indicator ── */
+.scrollIndicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.6;
+  animation: scrollBounce 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.scrollChevron {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  transform: rotate(45deg);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50%      { transform: translateX(-50%) translateY(6px); opacity: 0.3; }
 }
 
 /* ── Focus rings ── */

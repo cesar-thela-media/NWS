@@ -39,8 +39,8 @@ const GALLERY_DATA: GalleryCategory[] = [
     title: "Kitchen Remodeling",
     description: "From dark dramatic islands to bright open kitchens — see the range of kitchen transformations NWS has delivered.",
     images: [
-      { src: ux("1556909114-f6e7ad7d3136", 800), alt: "Dark modern kitchen island", label: "Sugar Land, TX" },
-      { src: ux("1484154218962-a197022b5858", 800), alt: "Bright open kitchen", label: "Katy, TX" },
+      { src: pic("nws-gallery-dark-kitchen", 800, 600), alt: "Dark modern kitchen island", label: "Sugar Land, TX" },
+      { src: pic("nws-gallery-bright-kitchen", 800, 600), alt: "Bright open kitchen", label: "Katy, TX" },
       ...Array.from({ length: 10 }, (_, i) => ({
         src: pic(`nws-kit-${i + 1}`),
         alt: `Kitchen remodel project ${i + 1}`,
@@ -53,7 +53,7 @@ const GALLERY_DATA: GalleryCategory[] = [
     title: "Bathroom Remodeling",
     description: "Spa-like master baths, clean guest bathrooms, and accessible ADA designs — explore NWS bathroom projects.",
     images: [
-      { src: ux("1552321554-5fefe8c9ef14", 800), alt: "Luxury freestanding bath", label: "Richmond, TX" },
+      { src: pic("nws-gallery-bathroom", 800, 600), alt: "Luxury freestanding bath", label: "Richmond, TX" },
       ...Array.from({ length: 11 }, (_, i) => ({
         src: pic(`nws-bath-${i + 1}`),
         alt: `Bathroom remodel ${i + 1}`,

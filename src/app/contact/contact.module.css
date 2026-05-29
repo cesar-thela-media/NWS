@@ -395,6 +395,21 @@ a.contactValue:hover {
   to { transform: rotate(360deg); }
 }
 
+/* ── Map ── */
+.mapSection {
+  background: var(--dark, #0c0f14);
+  padding: 0 clamp(20px, 2.6vw, 56px) clamp(32px, 2.6vw, 52px);
+}
+
+.mapInner {
+  max-width: 1288px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md, 0 10px 30px rgba(0, 0, 0, 0.20));
+  border: 1px solid rgba(160, 120, 64, 0.2);
+}
+
 /* ── Responsive ── */
 @media (max-width: 1100px) {
   .contactInner { grid-template-columns: 1fr; }

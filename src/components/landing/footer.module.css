@@ -1,3 +1,30 @@
+/* ── Back to top ── */
+.backToTop {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-gold, rgba(160, 120, 64, 0.4));
+  background: var(--dark, #0c0f14);
+  color: var(--gold-soft, #d4a858);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease, transform 200ms ease;
+  z-index: 2;
+}
+
+.backToTop:hover {
+  background: var(--gold, #a07840);
+  color: #fff;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(160, 120, 64, 0.35);
+}
+
 /* ── Shell ── */
 .footer {
   position: relative;
@@ -47,31 +74,35 @@
 
 /* Socials */
 .socials {
-  margin-top: 18px;
+  margin-top: 20px;
   display: flex;
-  gap: 18px;
+  gap: 14px;
 }
 
 .socialLink {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1px solid rgba(160, 120, 64, 0.36);
-  color: #d4a85a;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(160, 120, 64, 0.3);
+  color: var(--gold-soft, #d4a858);
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
 
 .socialLink svg {
   display: block;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
 }
 
 .socialLink:hover {
-  background: rgba(160, 120, 64, 0.18);
-  color: #f4cd7a;
-  border-color: rgba(160, 120, 64, 0.7);
+  background: var(--gold, #a07840);
+  color: #fff;
+  border-color: var(--gold, #a07840);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(160, 120, 64, 0.3);
 }
 
 /* ── Column headings ── */
@@ -104,8 +135,14 @@
   line-height: 1.5;
 }
 
+.list a {
+  transition: color 200ms ease, padding-left 200ms ease;
+  display: inline-block;
+}
+
 .list a:hover {
-  color: #fff;
+  color: var(--gold-soft, #d4a858);
+  padding-left: 4px;
 }
 
 /* Contact list items */

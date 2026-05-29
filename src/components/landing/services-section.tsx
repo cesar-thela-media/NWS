@@ -8,6 +8,8 @@ const CARD_SLUGS: Record<string, string> = {
   "Custom Home\nBuilding":     "custom-home-building",
   "Kitchen\nRemodeling":       "kitchen-remodeling",
   "Bathroom\nRemodeling":      "bathroom-remodeling",
+  "Shower\nRemodel":           "shower-remodel",
+  "Bathtub\nRemodel":          "bathtub-remodeling",
   "Room\nAdditions":           "room-additions",
   "Open Concept\nRemodeling":  "open-concept-remodeling",
 };
@@ -51,6 +53,7 @@ export function ServicesSection({ content }: ServicesSectionProps) {
             );
           })}
         </ul>
+        <p className={styles.scrollHint} aria-hidden="true">Scroll for more →</p>
       </div>
 
       {/* ── Bottom: quote + image ── */}

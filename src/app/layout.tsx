@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
+import { CookieConsent } from "@/components/ui/cookie-consent";
+import { PromoBar } from "@/components/ui/promo-bar";
+import { SocialProofBadges } from "@/components/ui/social-proof-badges";
+import { FloatingActions } from "@/components/ui/floating-actions";
 import "./globals.css";
 
 /* ── Fonts ─────────────────────────────────────────────── */
@@ -82,7 +86,10 @@ export default function RootLayout({
             />
           </noscript>
         )}
+        <PromoBar />
         {children}
+        <FloatingActions />
+        <CookieConsent />
       </body>
     </html>
   );

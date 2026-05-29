@@ -7,6 +7,15 @@ import styles from "./footer.module.css";
 export function Footer() {
   return (
     <footer className={styles.footer}>
+      {/* Back to top */}
+      <button
+        className={styles.backToTop}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        type="button"
+      >
+        <span aria-hidden="true">↑</span>
+      </button>
       <div className={styles.inner}>
         {/* ── Brand column ── */}
         <div className={styles.brandCol}>
@@ -55,6 +64,18 @@ export function Footer() {
               </svg>
             </a>
             <a
+              href="https://www.youtube.com/channel/UCeJ8l_IhyNplw76bt0yk4NA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="NWS on YouTube"
+              className={styles.socialLink}
+            >
+              {/* YouTube */}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22.5 6.1c-.3-1-1-1.7-2-2C18.9 3.5 12 3.5 12 3.5s-6.9 0-8.5.6c-1 .3-1.7 1-2 2C1 8.2 1 12 1 12s0 3.8.5 5.9c.3 1 1 1.7 2 2 1.6.6 8.5.6 8.5.6s6.9 0 8.5-.6c1-.3 1.7-1 2-2 .5-2.1.5-5.9.5-5.9s0-3.8-.5-5.9zM9.5 15.5V8.5l6 3.5-6 3.5z"/>
+              </svg>
+            </a>
+            <a
               href="https://g.page/r/CRyZ8e5jvBiVEBM/review"
               target="_blank"
               rel="noopener noreferrer"
@@ -76,6 +97,8 @@ export function Footer() {
             <li><Link href="/services/custom-home-building">Custom Home Building</Link></li>
             <li><Link href="/services/kitchen-remodeling">Kitchen Remodeling</Link></li>
             <li><Link href="/services/bathroom-remodeling">Bathroom Remodeling</Link></li>
+            <li><Link href="/services/shower-remodel">Shower Remodel</Link></li>
+            <li><Link href="/services/bathtub-remodeling">Bathtub Remodel</Link></li>
             <li><Link href="/services/room-additions">Room Additions</Link></li>
             <li><Link href="/services/open-concept-remodeling">Open Concept Remodeling</Link></li>
             <li><Link href="/services/whole-home-remodeling">Whole Home Remodeling</Link></li>
@@ -127,7 +150,7 @@ export function Footer() {
             </li>
             <li className={styles.contactItem}>
               <span className={styles.contactIcon} aria-hidden="true">⊙</span>
-              <span>1234 Monroe Rd, Ste 500<br />Richmond, TX 77469</span>
+              <span>Richmond, TX 77469</span>
             </li>
           </ul>
         </div>

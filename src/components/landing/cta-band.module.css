@@ -2,13 +2,15 @@
 .section {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(
-    ellipse at 50% -10%,
-    rgba(90, 72, 46, 0.22) 0%,
-    rgba(16, 18, 24, 0.98) 40%,
-    #0c0f14 100%
-  );
-  padding: clamp(44px, 3.8vw, 72px) clamp(20px, 2.6vw, 56px) clamp(32px, 2.6vw, 52px);
+  background:
+    linear-gradient(180deg, rgba(160, 120, 64, 0.06) 0%, transparent 30%),
+    radial-gradient(
+      ellipse at 50% -10%,
+      rgba(90, 72, 46, 0.28) 0%,
+      rgba(16, 18, 24, 0.98) 40%,
+      #0c0f14 100%
+    );
+  padding: clamp(52px, 4.2vw, 88px) clamp(20px, 2.6vw, 56px) clamp(32px, 2.6vw, 52px);
 }
 
 /* Large ghost NWS in background */
@@ -40,7 +42,10 @@
   /* Fluid size — large enough to be dramatic, small enough to not wrap */
   font-size: clamp(28px, 3.6vw, 62px);
   line-height: 1.02;
-  color: var(--text-light, #f4f1ec);
+  background: linear-gradient(135deg, #f4f1ec 0%, var(--gold-warm, #f4cd7a) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
@@ -75,8 +80,26 @@
 }
 
 .primaryButton {
-  background: #fff;
-  color: var(--dark, #0c0f14);
+  background: linear-gradient(135deg, var(--gold, #a07840) 0%, var(--gold-mid, #c09050) 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-25deg);
+  transition: left 600ms ease;
+}
+
+.primaryButton:hover::before {
+  left: 125%;
 }
 
 .secondaryButton {

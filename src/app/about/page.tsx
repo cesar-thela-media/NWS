@@ -62,7 +62,7 @@ export default function AboutPage() {
         {/* ── Page Hero ── */}
         <section className={styles.pageHero}>
           <Image
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80&auto=format&fit=crop"
+            src="https://picsum.photos/seed/nws-about-hero/1600/900"
             alt="NWS custom home exterior"
             fill
             priority
@@ -103,7 +103,7 @@ export default function AboutPage() {
             <div className={styles.storyMedia}>
               <div className={styles.storyImgMain}>
                 <Image
-                  src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&q=80&auto=format&fit=crop"
+                  src="https://picsum.photos/seed/nws-about-story-main/800/600"
                   alt="NWS completed kitchen remodel"
                   fill
                   sizes="(max-width: 1100px) 100vw, 50vw"
@@ -112,7 +112,7 @@ export default function AboutPage() {
               </div>
               <div className={styles.storyImgSide}>
                 <Image
-                  src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80&auto=format&fit=crop"
+                  src="https://picsum.photos/seed/nws-about-story-side/600/600"
                   alt="NWS luxury bathroom"
                   fill
                   sizes="(max-width: 1100px) 100vw, 25vw"
