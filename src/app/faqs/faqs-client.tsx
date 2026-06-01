@@ -97,6 +97,18 @@ const FAQ_GROUPS = [
   },
 ];
 
+const HERO_POINTS = [
+  "Questions on pricing, permits, process, and project planning.",
+  "Answers written for homeowners comparing builders and remodelers.",
+  "If you still need clarity, the team can walk through it directly.",
+];
+
+const FAQ_HELP = [
+  "Start with the category closest to your current concern.",
+  "Use Contact for project-specific pricing or scope questions.",
+  "Call directly if you want a fast answer before booking a consultation.",
+];
+
 function AccordionItem({ q, a, itemId }: { q: string; a: string; itemId: string }) {
   const [open, setOpen] = useState(false);
   const panelId = `faq-panel-${itemId}`;
@@ -146,17 +158,60 @@ export function FaqsClient() {
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <p className={styles.heroEyebrow}>FREQUENTLY ASKED QUESTIONS</p>
-            <h1 className={styles.heroHeading}>Your Questions,<br />Answered.</h1>
-            <p className={styles.heroSub}>
-              Everything you need to know before starting your project with NWS.
-            </p>
+            <div className={styles.heroCopy}>
+              <p className={styles.heroEyebrow}>FREQUENTLY ASKED QUESTIONS</p>
+              <h1 className={styles.heroHeading}>Your Questions,<br />Answered.</h1>
+              <p className={styles.heroSub}>
+                Everything homeowners usually want to know before starting a build, remodel, or major home upgrade with NWS.
+              </p>
+              <div className={styles.heroActions}>
+                <Link href="/contact" className={styles.primaryBtn}>Ask About Your Project</Link>
+                <a href="tel:+12812992309" className={styles.secondaryBtn}>Call (281) 299-2309</a>
+              </div>
+              <ul className={styles.heroPoints}>
+                {HERO_POINTS.map((point) => (
+                  <li key={point} className={styles.heroPoint}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <aside className={styles.heroPanel}>
+              <p className={styles.panelEyebrow}>Fast guidance</p>
+              <h2 className={styles.panelTitle}>Most answers live here. Project-specific ones start with a quick call.</h2>
+              <div className={styles.heroStats}>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{FAQ_GROUPS.length}</span>
+                  <span className={styles.heroStatLabel}>Question groups</span>
+                </div>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{FAQ_GROUPS.reduce((sum, group) => sum + group.faqs.length, 0)}</span>
+                  <span className={styles.heroStatLabel}>Common answers</span>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 
         {/* ── FAQ section ── */}
         <section className={styles.faqSection}>
           <div className={styles.faqInner}>
+            <div className={styles.faqIntro}>
+              <div className={styles.faqCopy}>
+                <p className={styles.sectionEyebrow}>BEFORE YOU START</p>
+                <h2 className={styles.sectionHeading}>Answers Organized by What Homeowners Ask Most</h2>
+                <p className={styles.sectionBody}>
+                  Browse by topic to understand how NWS handles consultations, pricing, scheduling, permits, warranties, and day-to-day project communication.
+                </p>
+              </div>
+              <div className={styles.helpCard}>
+                <p className={styles.helpEyebrow}>How to use this page</p>
+                <ul className={styles.helpList}>
+                  {FAQ_HELP.map((item) => (
+                    <li key={item} className={styles.helpItem}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
             {/* ── Category tabs ── */}
             <nav className={styles.tabs} aria-label="FAQ categories">
               {FAQ_GROUPS.map((group, i) => (
@@ -170,6 +225,14 @@ export function FaqsClient() {
                 </button>
               ))}
             </nav>
+
+            <div className={styles.groupHeader}>
+              <div>
+                <p className={styles.groupEyebrow}>Current topic</p>
+                <h3 className={styles.groupTitle}>{FAQ_GROUPS[activeGroup].category}</h3>
+              </div>
+              <span className={styles.groupCount}>{FAQ_GROUPS[activeGroup].faqs.length} answers</span>
+            </div>
 
             {/* ── Accordion ── */}
             <div className={styles.accordionList}>

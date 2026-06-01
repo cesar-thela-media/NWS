@@ -21,6 +21,24 @@ const SERVICES = [
   "Other / Not Sure",
 ];
 
+const HERO_POINTS = [
+  "Free consultations with honest guidance on scope, budget, and timing.",
+  "Direct contact with the same local team that manages your project.",
+  "Serving Richmond, Katy, Sugar Land, Fulshear, and Greater Houston.",
+];
+
+const CONTACT_PROMISES = [
+  "Clear next steps after the first conversation",
+  "No-pressure estimate and planning guidance",
+  "Fast follow-up from a real local team",
+];
+
+const CONTACT_STEPS = [
+  "Tell us about your space, goals, and timeline.",
+  "We review scope, answer questions, and discuss budget ranges.",
+  "If it is a fit, we schedule the next step for design or estimating.",
+];
+
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 interface FormFields {
@@ -105,11 +123,32 @@ export function ContactPageClient() {
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <p className={styles.heroEyebrow}>GET IN TOUCH</p>
-            <h1 className={styles.heroHeading}>Start Your Project</h1>
-            <p className={styles.heroSub}>
-              Free consultations. Honest estimates. No pressure.
-            </p>
+            <div className={styles.heroCopy}>
+              <p className={styles.heroEyebrow}>GET IN TOUCH</p>
+              <h1 className={styles.heroHeading}>Start Your Project</h1>
+              <p className={styles.heroSub}>
+                Free consultations, honest estimates, and practical guidance for homeowners planning a build,
+                remodel, or major upgrade.
+              </p>
+              <div className={styles.heroActions}>
+                <a href="tel:+12812992309" className={styles.primaryBtn}>Call (281) 299-2309</a>
+                <a href="mailto:info@nws-homes.com" className={styles.secondaryBtn}>Email the Team</a>
+              </div>
+              <ul className={styles.heroPoints}>
+                {HERO_POINTS.map((point) => (
+                  <li key={point} className={styles.heroPoint}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <aside className={styles.heroPanel}>
+              <p className={styles.panelEyebrow}>What to expect</p>
+              <h2 className={styles.panelTitle}>A clear first conversation, not a hard sell.</h2>
+              <ul className={styles.panelList}>
+                {CONTACT_PROMISES.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </aside>
           </div>
         </section>
 
@@ -118,12 +157,25 @@ export function ContactPageClient() {
           <div className={styles.contactInner}>
             {/* ── Left: info ── */}
             <div className={styles.infoCol}>
-              <p className={styles.eyebrow}>CONTACT NWS</p>
-              <h2 className={styles.heading}>Let&apos;s Talk About Your Home</h2>
-              <div className={styles.rule} />
-              <p className={styles.infoBody}>
-                Whether you&apos;re ready to start or just exploring, we&apos;re happy to answer questions and walk you through what&apos;s possible for your budget and timeline.
-              </p>
+              <div className={styles.infoIntro}>
+                <p className={styles.eyebrow}>CONTACT NWS</p>
+                <h2 className={styles.heading}>Let&apos;s Talk About Your Home</h2>
+                <div className={styles.rule} />
+                <p className={styles.infoBody}>
+                  Whether you&apos;re ready to start or still comparing options, we&apos;ll help you understand what&apos;s realistic,
+                  what it may cost, and what the next step should be for your home.
+                </p>
+              </div>
+
+              <div className={styles.infoCard}>
+                <p className={styles.infoCardEyebrow}>Before we meet</p>
+                <h3 className={styles.infoCardTitle}>Helpful details to include</h3>
+                <ul className={styles.stepsList}>
+                  {CONTACT_STEPS.map((step) => (
+                    <li key={step} className={styles.stepItem}>{step}</li>
+                  ))}
+                </ul>
+              </div>
 
               <ul className={styles.contactDetails}>
                 <li className={styles.contactItem}>
@@ -188,8 +240,17 @@ export function ContactPageClient() {
                 </div>
               ) : (
                 <form className={styles.form} onSubmit={handleSubmit} noValidate>
-                  <h3 className={styles.formTitle}>Free Consultation Request</h3>
-                  <p className={styles.formSub}>Typically responds within 24 hours</p>
+                  <div className={styles.formHeader}>
+                    <div>
+                      <p className={styles.formEyebrow}>Consultation request</p>
+                      <h3 className={styles.formTitle}>Free Consultation Request</h3>
+                      <p className={styles.formSub}>Typically responds within 24 hours</p>
+                    </div>
+                    <div className={styles.formMeta}>
+                      <span className={styles.formMetaValue}>24h</span>
+                      <span className={styles.formMetaLabel}>Typical reply window</span>
+                    </div>
+                  </div>
 
                   {/* Server-level error banner */}
                   {status === "error" && serverError && (
@@ -307,6 +368,10 @@ export function ContactPageClient() {
         {/* ── Map ── */}
         <section className={styles.mapSection}>
           <div className={styles.mapInner}>
+            <div className={styles.mapIntro}>
+              <p className={styles.mapEyebrow}>LOCAL SERVICE AREA</p>
+              <h2 className={styles.mapHeading}>Based in Richmond. Building across Greater Houston.</h2>
+            </div>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d222220.22117293508!2d-95.93028261328123!3d29.558560449999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e0cb9b66330b%3A0x1598bb76ef99c14!2sRichmond%2C%20TX!5e0!3m2!1sen!2sus!4v1!4m4!1m3!2m2!1d-95.7589!2d29.5819"
               width="100%"

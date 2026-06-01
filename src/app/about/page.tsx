@@ -34,6 +34,18 @@ const TEAM = [
   },
 ];
 
+const HERO_POINTS = [
+  "Family-rooted builder serving Greater Houston since 2007.",
+  "Custom homes and remodeling managed by one accountable local team.",
+  "Craftsmanship, communication, and long-term value in every scope.",
+];
+
+const STORY_PILLARS = [
+  "Dedicated project leadership instead of fragmented handoffs.",
+  "Licensed, insured trades and premium materials selected for durability.",
+  "A design-minded approach so finished spaces feel cohesive, not patched together.",
+];
+
 const VALUES = [
   {
     icon: "◆",
@@ -74,11 +86,34 @@ export default function AboutPage() {
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <p className={styles.heroEyebrow}>ABOUT NWS</p>
-            <h1 className={styles.heroHeading}>Built on Integrity.<br />Designed for Life.</h1>
-            <p className={styles.heroSub}>
-              Serving Greater Houston since 2007 — 500+ homes built and remodeled with the same family values we started with.
-            </p>
+            <div className={styles.heroCopy}>
+              <p className={styles.heroEyebrow}>ABOUT NWS</p>
+              <h1 className={styles.heroHeading}>Built on Integrity.<br />Designed for Life.</h1>
+              <p className={styles.heroSub}>
+                Serving Greater Houston since 2007, NWS has built and remodeled hundreds of homes with the same family-led standards we started with.
+              </p>
+              <div className={styles.heroActions}>
+                <Link href="/contact" className={styles.primaryBtn}>Start Your Project</Link>
+                <Link href="/galleries" className={styles.heroSecondaryBtn}>View Our Work</Link>
+              </div>
+              <ul className={styles.heroPoints}>
+                {HERO_POINTS.map((point) => (
+                  <li key={point} className={styles.heroPoint}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <aside className={styles.heroPanel}>
+              <p className={styles.heroPanelEyebrow}>What NWS stands for</p>
+              <h2 className={styles.heroPanelTitle}>A locally led builder with a long-view approach to quality.</h2>
+              <div className={styles.heroMetrics}>
+                {landingContent.about.stats.map((stat) => (
+                  <div key={stat.label} className={styles.heroMetric}>
+                    <span className={styles.heroMetricValue}>{stat.value}</span>
+                    <span className={styles.heroMetricLabel}>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -103,24 +138,35 @@ export default function AboutPage() {
                 <Link href="/galleries" className={styles.outlineBtn}>View Our Work</Link>
               </div>
             </div>
-            <div className={styles.storyMedia}>
-              <div className={styles.storyImgMain}>
-                <Image
-                  src="https://picsum.photos/seed/nws-about-story-main/800/600"
-                  alt="NWS completed kitchen remodel"
-                  fill
-                  sizes="(max-width: 1100px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
-                />
+            <div className={styles.storyRight}>
+              <div className={styles.storyCard}>
+                <p className={styles.storyCardEyebrow}>How we work</p>
+                <h3 className={styles.storyCardTitle}>High-touch planning. Built with discipline.</h3>
+                <ul className={styles.storyList}>
+                  {STORY_PILLARS.map((pillar) => (
+                    <li key={pillar} className={styles.storyListItem}>{pillar}</li>
+                  ))}
+                </ul>
               </div>
-              <div className={styles.storyImgSide}>
-                <Image
-                  src="https://picsum.photos/seed/nws-about-story-side/600/600"
-                  alt="NWS luxury bathroom"
-                  fill
-                  sizes="(max-width: 1100px) 100vw, 25vw"
-                  style={{ objectFit: "cover" }}
-                />
+              <div className={styles.storyMedia}>
+                <div className={styles.storyImgMain}>
+                  <Image
+                    src="https://picsum.photos/seed/nws-about-story-main/800/600"
+                    alt="NWS completed kitchen remodel"
+                    fill
+                    sizes="(max-width: 1100px) 100vw, 50vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className={styles.storyImgSide}>
+                  <Image
+                    src="https://picsum.photos/seed/nws-about-story-side/600/600"
+                    alt="NWS luxury bathroom"
+                    fill
+                    sizes="(max-width: 1100px) 100vw, 25vw"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -129,12 +175,21 @@ export default function AboutPage() {
         {/* ── Stats ── */}
         <section className={styles.statsSection}>
           <div className={styles.statsInner}>
-            {landingContent.about.stats.map((stat) => (
-              <div key={stat.label} className={styles.statItem}>
-                <span className={styles.statValue}>{stat.value}</span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
-            ))}
+            <div className={styles.statsIntro}>
+              <p className={styles.eyebrowLight}>PROVEN LOCALLY</p>
+              <h2 className={styles.sectionHeadingLight}>Built in Richmond. Trusted across Greater Houston.</h2>
+              <p className={styles.statsBody}>
+                The numbers matter because they reflect consistent delivery over time, not one-off showcase projects.
+              </p>
+            </div>
+            <div className={styles.statsGrid}>
+              {landingContent.about.stats.map((stat) => (
+                <div key={stat.label} className={styles.statItem}>
+                  <span className={styles.statValue}>{stat.value}</span>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -159,10 +214,17 @@ export default function AboutPage() {
         {/* ── Team ── */}
         <section className={styles.teamSection}>
           <div className={styles.teamInner}>
-            <p className={styles.eyebrowLight}>OUR TEAM</p>
-            <h2 className={styles.sectionHeadingLight}>The People Behind Every Build</h2>
+            <div className={styles.teamIntro}>
+              <div>
+                <p className={styles.eyebrowLight}>OUR TEAM</p>
+                <h2 className={styles.sectionHeadingLight}>The People Behind Every Build</h2>
+              </div>
+              <p className={styles.teamLead}>
+                Behind every estimate, design decision, field adjustment, and final walkthrough is a team that treats communication and craftsmanship as part of the same job.
+              </p>
+            </div>
             <div className={styles.teamGrid}>
-              {TEAM.map((member) => (
+              {TEAM.map((member, index) => (
                 <div key={member.name} className={styles.teamCard}>
                   <div className={styles.teamImgWrap}>
                     <Image
@@ -172,6 +234,7 @@ export default function AboutPage() {
                       sizes="(max-width: 760px) 100vw, 33vw"
                       style={{ objectFit: "cover" }}
                     />
+                    <span className={styles.teamIndex}>{String(index + 1).padStart(2, "0")}</span>
                   </div>
                   <div className={styles.teamInfo}>
                     <h3 className={styles.teamName}>{member.name}</h3>

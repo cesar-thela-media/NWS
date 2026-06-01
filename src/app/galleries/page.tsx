@@ -48,6 +48,18 @@ const GALLERY_CATEGORIES = [
   },
 ];
 
+const HERO_POINTS = [
+  "Custom homes, kitchens, baths, and additions from real NWS projects.",
+  "Browse by project type to find inspiration that matches your scope.",
+  "Every gallery is focused on finished work, materials, and layout ideas.",
+];
+
+const CURATION_NOTES = [
+  "Start with the category closest to your planned scope.",
+  "Use the featured mosaic to compare material palettes and layout styles.",
+  "Open any photo for a cleaner, larger look inside the lightbox.",
+];
+
 function pic(seed: string) {
   return `https://picsum.photos/seed/${seed}/600/450`;
 }
@@ -62,6 +74,8 @@ const FEATURED = [
   { src: pic("nws-f3"), alt: "Room addition interior" },
   { src: "https://picsum.photos/seed/nws-featured-dark-kitchen/700/525", alt: "Dark modern kitchen" },
 ];
+
+const TOTAL_PHOTOS = GALLERY_CATEGORIES.reduce((sum, category) => sum + category.count, 0);
 
 export default function GalleriesPage() {
   return (
@@ -80,20 +94,60 @@ export default function GalleriesPage() {
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <p className={styles.heroEyebrow}>OUR PORTFOLIO</p>
-            <h1 className={styles.heroHeading}>Photo Galleries</h1>
-            <p className={styles.heroSub}>Real projects. Real results. Browse our completed work.</p>
+            <div className={styles.heroCopy}>
+              <p className={styles.heroEyebrow}>OUR PORTFOLIO</p>
+              <h1 className={styles.heroHeading}>Photo Galleries</h1>
+              <p className={styles.heroSub}>Real projects, real finishes, and real construction work across Greater Houston.</p>
+              <div className={styles.heroActions}>
+                <a href="#gallery-categories" className={styles.primaryBtn}>Browse Categories</a>
+                <a href="#featured-projects" className={styles.secondaryBtn}>View Featured Work</a>
+              </div>
+              <ul className={styles.heroPoints}>
+                {HERO_POINTS.map((point) => (
+                  <li key={point} className={styles.heroPoint}>{point}</li>
+                ))}
+              </ul>
+            </div>
+            <aside className={styles.heroPanel}>
+              <p className={styles.panelEyebrow}>Portfolio overview</p>
+              <h2 className={styles.panelTitle}>A visual library built for homeowners comparing possibilities.</h2>
+              <div className={styles.heroStats}>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{GALLERY_CATEGORIES.length}</span>
+                  <span className={styles.heroStatLabel}>Main categories</span>
+                </div>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{TOTAL_PHOTOS}+</span>
+                  <span className={styles.heroStatLabel}>Photos available</span>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 
         {/* ── Category cards ── */}
-        <section className={styles.categoriesSection}>
+        <section className={styles.categoriesSection} id="gallery-categories">
           <div className={styles.sectionInner}>
-            <p className={styles.eyebrow}>BROWSE BY CATEGORY</p>
-            <h2 className={styles.sectionHeading}>Choose a Collection</h2>
-            <div className={styles.rule} />
+            <div className={styles.sectionIntro}>
+              <div className={styles.sectionCopy}>
+                <p className={styles.eyebrow}>BROWSE BY CATEGORY</p>
+                <h2 className={styles.sectionHeading}>Choose a Collection</h2>
+                <div className={styles.rule} />
+                <p className={styles.sectionBody}>
+                  Start with the kind of project you are planning. Each gallery groups inspiration by scope so it is easier to compare details, layouts, and finish direction.
+                </p>
+              </div>
+              <div className={styles.curationCard}>
+                <p className={styles.curationEyebrow}>How to use this page</p>
+                <ul className={styles.curationList}>
+                  {CURATION_NOTES.map((note) => (
+                    <li key={note} className={styles.curationItem}>{note}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             <div className={styles.categoryGrid}>
-              {GALLERY_CATEGORIES.map((cat) => (
+              {GALLERY_CATEGORIES.map((cat, index) => (
                 <Link key={cat.slug} href={`/galleries/${cat.slug}`} className={styles.categoryCard}>
                   <div className={styles.categoryImgWrap}>
                     <Image
@@ -104,6 +158,7 @@ export default function GalleriesPage() {
                       style={{ objectFit: "cover", transition: "transform 420ms ease" }}
                       className={styles.categoryImg}
                     />
+                    <span className={styles.categoryIndex}>{String(index + 1).padStart(2, "0")}</span>
                     <div className={styles.categoryOverlay} />
                   </div>
                   <div className={styles.categoryBody}>
@@ -123,10 +178,17 @@ export default function GalleriesPage() {
         </section>
 
         {/* ── Featured mosaic (client — handles lightbox) ── */}
-        <section className={styles.mosaicSection}>
+        <section className={styles.mosaicSection} id="featured-projects">
           <div className={styles.sectionInner}>
-            <p className={styles.eyebrowLight}>FEATURED PROJECTS</p>
-            <h2 className={styles.sectionHeadingLight}>A Taste of Our Work</h2>
+            <div className={styles.mosaicIntro}>
+              <div>
+                <p className={styles.eyebrowLight}>FEATURED PROJECTS</p>
+                <h2 className={styles.sectionHeadingLight}>A Taste of Our Work</h2>
+              </div>
+              <p className={styles.mosaicLead}>
+                These images are a quick cross-section of the finishes, spatial planning, and construction quality clients can expect from NWS work.
+              </p>
+            </div>
             <GalleryMosaicClient images={FEATURED} />
           </div>
         </section>

@@ -34,6 +34,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   /* Related services — exclude current, take first 3 */
   const related = SERVICES.filter((s) => s.slug !== slug).slice(0, 3);
+  const heroHighlights = service.details.slice(0, 3);
 
   return (
     <>
@@ -51,20 +52,41 @@ export default async function ServiceDetailPage({ params }: Props) {
           />
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <Link href="/services" className={styles.breadcrumb}>
-              ← All Services
-            </Link>
-            <h1 className={styles.heroHeading}>{service.title}</h1>
-            <p className={styles.heroTagline}>{service.tagline}</p>
-            {service.startingPrice && (
-              <p className={styles.heroPrice}>Starting from {service.startingPrice}</p>
-            )}
-            <div className={styles.heroCtas}>
-              <Link href="/contact" className={styles.primaryBtn}>Get a Free Estimate</Link>
-              <a href="tel:+12812992309" className={styles.phoneBtn}>
-                <span aria-hidden="true">☎</span> (281) 299-2309
-              </a>
+            <div className={styles.heroCopy}>
+              <Link href="/services" className={styles.breadcrumb}>
+                ← All Services
+              </Link>
+              <h1 className={styles.heroHeading}>{service.title}</h1>
+              <p className={styles.heroTagline}>{service.tagline}</p>
+              {service.startingPrice && (
+                <p className={styles.heroPrice}>Starting from {service.startingPrice}</p>
+              )}
+              <div className={styles.heroCtas}>
+                <Link href="/contact" className={styles.primaryBtn}>Get a Free Estimate</Link>
+                <a href="tel:+12812992309" className={styles.phoneBtn}>
+                  <span aria-hidden="true">☎</span> (281) 299-2309
+                </a>
+              </div>
+              <ul className={styles.heroHighlights}>
+                {heroHighlights.map((item) => (
+                  <li key={item} className={styles.heroHighlight}>{item}</li>
+                ))}
+              </ul>
             </div>
+            <aside className={styles.heroPanel}>
+              <p className={styles.heroPanelEyebrow}>Project snapshot</p>
+              <h2 className={styles.heroPanelTitle}>A full-service approach from first walkthrough to final finish.</h2>
+              <div className={styles.heroStats}>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{service.galleryImages.length}+</span>
+                  <span className={styles.heroStatLabel}>Project photos</span>
+                </div>
+                <div className={styles.heroStat}>
+                  <span className={styles.heroStatValue}>{service.features.length}</span>
+                  <span className={styles.heroStatLabel}>Core features</span>
+                </div>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -72,9 +94,14 @@ export default async function ServiceDetailPage({ params }: Props) {
         <section className={styles.overviewSection}>
           <div className={styles.overviewInner}>
             <div className={styles.overviewText}>
-              <p className={styles.eyebrow}>OVERVIEW</p>
-              <h2 className={styles.sectionHeading}>{service.title}</h2>
-              <div className={styles.rule} />
+              <div className={styles.sectionIntro}>
+                <p className={styles.eyebrow}>OVERVIEW</p>
+                <h2 className={styles.sectionHeading}>{service.title}</h2>
+                <div className={styles.rule} />
+                <p className={styles.sectionLead}>
+                  Designed for homeowners who want clearer planning, better execution, and a finished result that feels fully considered.
+                </p>
+              </div>
               <p className={styles.bodyText}>{service.description}</p>
 
               {/* Feature pills */}
@@ -106,8 +133,15 @@ export default async function ServiceDetailPage({ params }: Props) {
         {/* ── Gallery ── */}
         <section className={styles.gallerySection}>
           <div className={styles.galleryInner}>
-            <p className={styles.eyebrowLight}>OUR WORK</p>
-            <h2 className={styles.sectionHeadingLight}>Recent {service.title} Projects</h2>
+            <div className={styles.galleryIntro}>
+              <div>
+                <p className={styles.eyebrowLight}>OUR WORK</p>
+                <h2 className={styles.sectionHeadingLight}>Recent {service.title} Projects</h2>
+              </div>
+              <p className={styles.galleryLead}>
+                A quick look at the layouts, materials, and finish direction clients can expect from this service.
+              </p>
+            </div>
             <div className={styles.galleryGrid}>
               {service.galleryImages.map((img, i) => (
                 <div key={i} className={styles.galleryItem}>
@@ -130,9 +164,16 @@ export default async function ServiceDetailPage({ params }: Props) {
         {/* ── Process ── */}
         <section className={styles.processSection}>
           <div className={styles.processInner}>
-            <p className={styles.eyebrow}>HOW IT WORKS</p>
-            <h2 className={styles.sectionHeading}>Our Simple 4-Step Process</h2>
-            <div className={styles.rule} />
+            <div className={styles.processIntro}>
+              <div>
+                <p className={styles.eyebrow}>HOW IT WORKS</p>
+                <h2 className={styles.sectionHeading}>Our Simple 4-Step Process</h2>
+                <div className={styles.rule} />
+              </div>
+              <p className={styles.processLead}>
+                The process stays consistent across services so homeowners always know what happens next and who is accountable.
+              </p>
+            </div>
             <div className={styles.processGrid}>
               {[
                 { step: "01", title: "Free Consultation", body: "We meet at your home to understand your vision, take measurements, and discuss your budget and timeline." },
@@ -153,8 +194,15 @@ export default async function ServiceDetailPage({ params }: Props) {
         {/* ── Related services ── */}
         <section className={styles.relatedSection}>
           <div className={styles.relatedInner}>
-            <p className={styles.eyebrowLight}>EXPLORE MORE</p>
-            <h2 className={styles.sectionHeadingLight}>Related Services</h2>
+            <div className={styles.relatedIntro}>
+              <div>
+                <p className={styles.eyebrowLight}>EXPLORE MORE</p>
+                <h2 className={styles.sectionHeadingLight}>Related Services</h2>
+              </div>
+              <p className={styles.relatedLead}>
+                If you are still comparing scope, these adjacent services are often reviewed alongside {service.title.toLowerCase()}.
+              </p>
+            </div>
             <div className={styles.relatedGrid}>
               {related.map((s) => (
                 <Link key={s.slug} href={`/services/${s.slug}`} className={styles.relatedCard}>
