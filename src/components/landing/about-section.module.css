@@ -145,16 +145,28 @@
 
 .statValue {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(48px, 4vw, 84px);
+  font-size: clamp(52px, 4.4vw, 88px);
   line-height: 1;
   color: var(--text-dark, #1a1f27);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+
+.statSuffix {
+  font-size: 0.6em;
+  color: var(--gold, #9c6f34);
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .statLabel {
   margin-top: 10px;
-  font-size: clamp(12px, 0.78vw, 16px);
-  letter-spacing: 0.12em;
-  color: var(--gold, #a07840);
+  font-size: clamp(11px, 0.72vw, 14px);
+  letter-spacing: 0.14em;
+  color: var(--text-dark-sub, #5a6270);
   text-transform: uppercase;
 }
 

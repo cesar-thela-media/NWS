@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { trackLandingEvent } from "@/lib/analytics";
 import { NavDrawer } from "@/components/ui/nav-drawer";
+import { MarqueeStrip } from "@/components/ui/marquee-strip";
 import type { HeroContent } from "@/lib/types";
 import styles from "./hero.module.css";
 
@@ -125,6 +126,7 @@ export function Hero({ content }: HeroProps) {
         </div>
       </section>
 
+      <MarqueeStrip />
       <NavDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
     </>
   );
