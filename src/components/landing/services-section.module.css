@@ -27,7 +27,6 @@
   letter-spacing: -0.02em;
   white-space: pre-line;
   color: var(--text-dark, #1a1f27);
-  max-width: 8ch;
 }
 
 /* ── Split panel ── */
