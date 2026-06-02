@@ -13,10 +13,11 @@ interface HeroProps {
   content: HeroContent;
 }
 
-const HERO_FACTS = [
-  { value: "18+", label: "Years building in Fort Bend" },
-  { value: "500+", label: "Custom homes and remodels" },
-  { value: "4.9", label: "Average rating across reviews" },
+const HERO_STATS = [
+  { value: "18+",  label: "Years in Fort Bend" },
+  { value: "500+", label: "Projects completed" },
+  { value: "4.9",  label: "Google rating" },
+  { value: "98%",  label: "Client satisfaction" },
 ];
 
 export function Hero({ content }: HeroProps) {
@@ -89,15 +90,6 @@ export function Hero({ content }: HeroProps) {
                     {content.secondaryCta}
                   </Link>
                 </div>
-
-                <ul className={styles.factRow} aria-label="Company highlights">
-                  {HERO_FACTS.map((fact) => (
-                    <li key={fact.label} className={styles.factItem}>
-                      <span className={styles.factValue}>{fact.value}</span>
-                      <span className={styles.factLabel}>{fact.label}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
               <Link
@@ -122,6 +114,16 @@ export function Hero({ content }: HeroProps) {
                 </div>
               </Link>
             </div>
+          </div>
+
+          {/* Full-width stats bar pinned to the bottom of the hero image */}
+          <div className={styles.statsBar} aria-label="Company highlights">
+            {HERO_STATS.map((stat) => (
+              <div key={stat.label} className={styles.statItem}>
+                <span className={styles.statValue}>{stat.value}</span>
+                <span className={styles.statLabel}>{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

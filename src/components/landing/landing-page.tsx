@@ -3,6 +3,7 @@ import { AboutSection } from "./about-section";
 import { CtaBand } from "./cta-band";
 import { Footer } from "./footer";
 import { Hero } from "./hero";
+import { ProcessSection } from "./process-section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { ServicesSection } from "./services-section";
 import { TestimonialsSection } from "./testimonials-section";
@@ -24,6 +25,9 @@ export function LandingPage() {
       </ScrollReveal>
       <ScrollReveal className={styles.sectionWrap}>
         <TestimonialsSection testimonials={landingContent.testimonials} />
+      </ScrollReveal>
+      <ScrollReveal className={styles.sectionWrap}>
+        <ProcessSection />
       </ScrollReveal>
       <ScrollReveal className={styles.sectionWrap}>
         <CtaBand content={landingContent.ctaFooter} />

@@ -1,0 +1,174 @@
+/* ── Shell ── */
+.section {
+  position: relative;
+  background: radial-gradient(ellipse at 50% 110%, rgba(52, 38, 22, 0.18) 0%, #0c0f14 52%);
+  padding: clamp(88px, 7vw, 128px) clamp(20px, 2.6vw, 56px) clamp(72px, 5.5vw, 104px);
+  border-top: 1px solid rgba(156, 111, 52, 0.12);
+}
+
+.inner {
+  max-width: var(--max-w, 1240px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin-bottom: clamp(56px, 5vw, 88px);
+}
+
+.eyebrow {
+  font-size: clamp(11px, 0.72vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft, #d3ab6a);
+  margin-bottom: 14px;
+}
+
+.heading {
+  font-size: clamp(36px, 4.2vw, 70px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--text-light, #f4f1ec);
+}
+
+.sub {
+  margin-top: 16px;
+  font-size: clamp(15px, 1vw, 19px);
+  line-height: 1.6;
+  color: rgba(244, 241, 236, 0.52);
+}
+
+/* ── 3-column timeline ── */
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+/* Connecting line spans from center-of-col-1 to center-of-col-3 */
+.steps::before {
+  content: "";
+  position: absolute;
+  top: calc(clamp(52px, 4.4vw, 64px) / 2); /* half node height */
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(156, 111, 52, 0.14) 0%,
+    rgba(156, 111, 52, 0.56) 50%,
+    rgba(156, 111, 52, 0.14) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Individual step ── */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(20px, 2.4vw, 44px);
+}
+
+/* Circle node */
+.node {
+  position: relative;
+  z-index: 1;
+  width: clamp(52px, 4.4vw, 64px);
+  height: clamp(52px, 4.4vw, 64px);
+  border-radius: 50%;
+  border: 1.5px solid rgba(156, 111, 52, 0.44);
+  background: linear-gradient(
+    145deg,
+    rgba(156, 111, 52, 0.16) 0%,
+    rgba(10, 13, 20, 0.88) 100%
+  );
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(17px, 1.4vw, 22px);
+  color: var(--gold-soft, #d3ab6a);
+  margin-bottom: clamp(22px, 1.8vw, 32px);
+  transition: border-color 280ms ease, box-shadow 280ms ease;
+}
+
+.step:hover .node {
+  border-color: rgba(156, 111, 52, 0.82);
+  box-shadow: 0 0 28px rgba(156, 111, 52, 0.22);
+}
+
+.stepTitle {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(22px, 1.9vw, 32px);
+  line-height: 1.1;
+  color: var(--text-light, #f4f1ec);
+  margin-bottom: clamp(10px, 1vw, 16px);
+  letter-spacing: -0.01em;
+}
+
+.stepBody {
+  font-size: clamp(14px, 0.92vw, 17px);
+  line-height: 1.68;
+  color: rgba(244, 241, 236, 0.54);
+  max-width: 300px;
+}
+
+/* ── CTA ── */
+.cta {
+  margin-top: clamp(52px, 4.4vw, 76px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.3vw, 24px);
+  color: var(--gold-warm, #f4cd7a);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.cta:hover {
+  opacity: 0.78;
+  transform: translateX(4px);
+}
+
+/* ── Tablet: tighter padding ── */
+@media (max-width: 900px) {
+  .step { padding: 0 clamp(12px, 2vw, 24px); }
+  .stepBody { max-width: 240px; }
+}
+
+/* ── Mobile: vertical stack ── */
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: clamp(40px, 6vw, 56px);
+  }
+
+  /* Hide the horizontal connecting line on mobile */
+  .steps::before { display: none; }
+
+  .step { padding: 0; }
+
+  /* Vertical line between steps */
+  .step:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: clamp(32px, 5vw, 48px);
+    background: linear-gradient(180deg, rgba(156, 111, 52, 0.5) 0%, rgba(156, 111, 52, 0.1) 100%);
+    margin: clamp(20px, 3vw, 28px) auto 0;
+  }
+
+  .stepBody { max-width: 380px; }
+}

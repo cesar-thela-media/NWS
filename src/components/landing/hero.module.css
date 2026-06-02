@@ -56,7 +56,8 @@
   flex-direction: column;
   max-width: var(--max-w, 1288px);
   margin: 0 auto;
-  padding: clamp(20px, 2.2vw, 42px) clamp(20px, 2.8vw, 48px) clamp(40px, 4vw, 56px);
+  /* bottom pad must clear the statsBar (~96px) + breathing room */
+  padding: clamp(20px, 2.2vw, 42px) clamp(20px, 2.8vw, 48px) clamp(116px, 11vw, 152px);
 }
 
 /* ── Top nav ── */
@@ -215,35 +216,52 @@
   }
 }
 
-.factRow {
+/* ── Full-width stats bar at bottom of hero ── */
+.statsBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: clamp(26px, 2.2vw, 34px);
+  grid-template-columns: repeat(4, 1fr);
+  background: rgba(6, 8, 14, 0.82);
+  backdrop-filter: blur(22px);
+  border-top: 1px solid rgba(156, 111, 52, 0.30);
+  z-index: 10;
 }
 
-.factItem {
+.statItem {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 18px 18px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
+  align-items: center;
+  gap: 5px;
+  padding: clamp(14px, 1.5vw, 22px) clamp(12px, 1.2vw, 20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 200ms ease;
 }
 
-.factValue {
+.statItem:last-child {
+  border-right: none;
+}
+
+.statItem:hover {
+  background: rgba(156, 111, 52, 0.06);
+}
+
+.statValue {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(28px, 2.2vw, 42px);
+  font-size: clamp(28px, 2.4vw, 42px);
   line-height: 1;
   color: var(--text-light, #f4f1ec);
+  letter-spacing: -0.02em;
 }
 
-.factLabel {
-  font-size: clamp(12px, 0.74vw, 14px);
-  line-height: 1.5;
-  color: rgba(244, 241, 236, 0.72);
+.statLabel {
+  font-size: clamp(10px, 0.66vw, 12px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 236, 0.5);
+  text-align: center;
 }
 
 .projectPanel {
@@ -382,8 +400,16 @@
     font-size: clamp(44px, 13vw, 72px);
   }
 
-  .factRow {
-    grid-template-columns: 1fr;
+  /* 2×2 grid for narrow screens */
+  .statsBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statItem:nth-child(2) { border-right: none; }
+
+  .statItem:nth-child(3),
+  .statItem:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 }
 
@@ -431,7 +457,7 @@
   }
 
   .inner {
-    padding: 22px 56px 48px;
+    padding: 22px 56px 152px;
   }
 
   .contentGrid {
@@ -463,10 +489,6 @@
   .contactButton {
     padding: 12px 26px;
     font-size: 18px;
-  }
-
-  .factRow {
-    gap: 18px;
   }
 
   .projectPanel {
